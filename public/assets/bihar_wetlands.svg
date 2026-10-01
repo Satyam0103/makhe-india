@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8DFCE" />
+      <stop offset="35%" stop-color="#F2E6CE" />
+      <stop offset="70%" stop-color="#EAD1A6" />
+      <stop offset="100%" stop-color="#D9A86C" />
+    </linearGradient>
+
+    <radialGradient id="morningSun" cx="65%" cy="35%" r="40%">
+      <stop offset="0%" stop-color="#FFF8E7" stop-opacity="1" />
+      <stop offset="30%" stop-color="#F7D89C" stop-opacity="0.8" />
+      <stop offset="70%" stop-color="#E5AA5D" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#D9A86C" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#557055" />
+      <stop offset="40%" stop-color="#2D4D33" />
+      <stop offset="100%" stop-color="#142B1A" />
+    </linearGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1200" height="420" fill="url(#skyGrad)" />
+  <rect width="1200" height="420" fill="url(#morningSun)" />
+
+  <!-- Distant Haze & Palm Trees / Trees on Riverbank -->
+  <g opacity="0.35" fill="#4A5E44">
+    <ellipse cx="650" cy="380" rx="300" ry="40" />
+    <path d="M 0 380 Q 300 360, 600 375 T 1200 370 L 1200 420 L 0 420 Z" />
+    <!-- Distant Palm Tree Silhouettes -->
+    <path d="M 450 380 L 452 320 M 440 315 Q 452 305, 465 315 M 435 325 Q 452 315, 470 325 M 445 335 Q 452 320, 460 335" stroke="#3A4D35" stroke-width="2.5" />
+    <path d="M 480 380 L 481 330 M 470 325 Q 481 315, 492 325 M 465 333 Q 481 323, 495 333" stroke="#3A4D35" stroke-width="2" />
+    <path d="M 850 380 L 852 310 M 838 305 Q 852 295, 868 305 M 835 318 Q 852 305, 872 318" stroke="#3A4D35" stroke-width="2.5" />
+  </g>
+
+  <!-- Serene Bihar Wetlands Water Surface -->
+  <rect y="400" width="1200" height="300" fill="url(#waterGrad)" />
+
+  <!-- Golden Sun Shimmer on Wetland Water -->
+  <g opacity="0.4">
+    <ellipse cx="780" cy="420" rx="140" ry="12" fill="#FDF3DB" filter="blur(6px)" />
+    <ellipse cx="780" cy="450" rx="200" ry="18" fill="#F4D9A0" filter="blur(10px)" />
+    <ellipse cx="780" cy="500" rx="260" ry="24" fill="#E8BD74" filter="blur(14px)" />
+  </g>
+
+  <!-- Giant Floating Euryale Ferox / Lotus Lily Pads in Wetland Waters -->
+  <!-- Layer 1: Midground Pads -->
+  <g fill="#2A5034" stroke="#1B3A23" stroke-width="2" opacity="0.9">
+    <ellipse cx="250" cy="480" rx="140" ry="34" />
+    <ellipse cx="520" cy="460" rx="110" ry="28" />
+    <ellipse cx="980" cy="470" rx="150" ry="36" />
+    <ellipse cx="750" cy="445" rx="80" ry="20" fill="#3B6344" />
+  </g>
+
+  <!-- Traditional Bihar Makhana Harvesting Boat / Farmer Silhouette -->
+  <g transform="translate(680, 420)">
+    <!-- Wooden Canoe (Dongha) -->
+    <path d="M -90 15 Q 0 35, 110 15 Q 0 20, -90 15 Z" fill="#18271B" />
+    <line x1="-100" y1="12" x2="120" y2="12" stroke="#2D4230" stroke-width="2" />
+    <!-- Farmer Silhouetted Harvesting with Bamboo Pole / Net -->
+    <ellipse cx="10" cy="-28" rx="8" ry="9" fill="#18271B" />
+    <!-- Traditional Pagri / Turban -->
+    <path d="M 2 -32 C 8 -38, 20 -34, 18 -26 Z" fill="#3D2918" />
+    <!-- Body -->
+    <path d="M 5 -19 L 15 15 L 2 15 Z" fill="#18271B" />
+    <!-- Long Bamboo Harvesting Pole into Wetland -->
+    <line x1="-30" y1="-10" x2="50" y2="45" stroke="#C59B27" stroke-width="2" />
+    <!-- Makhana Basket / Tokri on Boat -->
+    <ellipse cx="-40" cy="8" rx="16" ry="10" fill="#8C663D" stroke="#5A3E20" stroke-width="1.5" />
+    <ellipse cx="-40" cy="6" rx="14" ry="7" fill="#FAF5EC" />
+  </g>
+
+  <!-- Foreground Giant Floating Makhana Leaves with Spines (Euryale ferox) -->
+  <g>
+    <!-- Giant Leaf Left -->
+    <g transform="translate(180, 600)">
+      <ellipse cx="0" cy="0" rx="260" ry="65" fill="#1E3E26" stroke="#C59B27" stroke-width="1.5" stroke-opacity="0.4" />
+      <ellipse cx="0" cy="0" rx="250" ry="60" fill="#254D30" />
+      <!-- Radial Veins of the Makhana Leaf -->
+      <path d="M 0 0 L -210 -25 M 0 0 L -180 35 M 0 0 L -120 -45 M 0 0 L 140 -40 M 0 0 L 220 -15 M 0 0 L 190 35 M 0 0 L 100 50 M 0 0 L -60 52" stroke="#17341F" stroke-width="2.5" />
+      <!-- Pure Morning Dewdrops -->
+      <circle cx="-60" cy="-18" r="6" fill="#FFFFFF" opacity="0.8" />
+      <circle cx="80" cy="12" r="8" fill="#FFFFFF" opacity="0.75" />
+      <circle cx="140" cy="-10" r="5" fill="#FFFFFF" opacity="0.8" />
+    </g>
+
+    <!-- Giant Leaf Right -->
+    <g transform="translate(1000, 620)">
+      <ellipse cx="0" cy="0" rx="280" ry="70" fill="#1B3B24" />
+      <ellipse cx="0" cy="0" rx="265" ry="62" fill="#23492D" stroke="#35613F" stroke-width="2" />
+      <path d="M 0 0 L -220 -20 M 0 0 L -160 38 M 0 0 L 160 -42 M 0 0 L 230 -10 M 0 0 L 180 38" stroke="#16311D" stroke-width="2.5" />
+      <circle cx="-50" cy="15" r="7" fill="#FFFFFF" opacity="0.8" />
+    </g>
+
+    <!-- Center Blossom / Floating Makhana Puff -->
+    <g transform="translate(580, 560)">
+      <ellipse cx="0" cy="0" rx="180" ry="46" fill="#1A3A22" />
+      <!-- Floating Fresh Raw Seed Pod -->
+      <circle cx="0" cy="-10" r="22" fill="#6A4522" stroke="#482E14" stroke-width="2" />
+      <!-- Deep Purple/Violet Water Lily Bloom -->
+      <path d="M -15 -18 C -25 -40, -10 -45, 0 -30 C 10 -45, 25 -40, 15 -18 Z" fill="#8E3C75" />
+      <path d="M -8 -18 C -15 -35, 0 -42, 0 -22 C 0 -42, 15 -35, 8 -18 Z" fill="#B35296" />
+    </g>
+  </g>
+
+  <!-- Atmospheric Wetland Label in Corner -->
+  <g transform="translate(60, 60)">
+    <rect x="0" y="0" width="260" height="42" rx="4" fill="#0C1D13" fill-opacity="0.8" stroke="#C59B27" stroke-width="1" />
+    <text x="18" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#E5C778" letter-spacing="2">BIHAR WETLANDS ARCHIVE</text>
+  </g>
+</svg>

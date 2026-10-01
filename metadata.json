@@ -1,0 +1,6 @@
+{
+  "name": "Makhé India — Premium Bihar Makhana",
+  "description": "Premium 100% Whole Jumbo Makhana sourced directly from the heart of Bihar. Clean snacking, hygienically packed, and traditionally harvested.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="craftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2E20" />
+      <stop offset="50%" stop-color="#24422D" />
+      <stop offset="100%" stop-color="#14261A" />
+    </linearGradient>
+    <radialGradient id="craftMakhana" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="65%" stop-color="#FAF5EC" />
+      <stop offset="100%" stop-color="#D9C7AC" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1000" height="600" fill="url(#craftGrad)" rx="8" />
+
+  <!-- Traditional Woven Bamboo Basket (Tokri) in Golden Courtyard Light -->
+  <g transform="translate(500, 340)">
+    <!-- Basket Shadow -->
+    <ellipse cx="0" cy="140" rx="340" ry="40" fill="#0A140D" opacity="0.6" />
+
+    <!-- Woven Bamboo Tokri Base -->
+    <path d="M -300 10 C -300 120, -220 160, 0 160 C 220 160, 300 120, 300 10 Z" fill="#75502A" stroke="#523517" stroke-width="3" />
+    <!-- Tokri Rim -->
+    <ellipse cx="0" cy="10" rx="300" ry="45" fill="#8A6034" stroke="#4A3015" stroke-width="2" />
+    <ellipse cx="0" cy="10" rx="285" ry="38" fill="#5E3E1E" />
+
+    <!-- Woven Strips Weave Texture -->
+    <g stroke="#9E7345" stroke-width="1.8" opacity="0.4">
+      <path d="M -240 40 L 240 40 M -260 70 L 260 70 M -240 100 L 240 100 M -200 130 L 200 130" />
+      <path d="M -180 15 L -140 150 M -90 15 L -70 160 M 0 15 L 0 160 M 90 15 L 70 160 M 180 15 L 140 150" />
+    </g>
+
+    <!-- Mountain Heap of Sun-Dried & Popped Jumbo Makhana in Tokri -->
+    <g stroke="#C2AD8D" stroke-width="0.8">
+      <circle cx="-180" cy="-20" r="38" fill="url(#craftMakhana)" />
+      <circle cx="180" cy="-20" r="40" fill="url(#craftMakhana)" />
+      <circle cx="-110" cy="-45" r="44" fill="url(#craftMakhana)" />
+      <circle cx="110" cy="-45" r="46" fill="url(#craftMakhana)" />
+      <circle cx="0" cy="-55" r="50" fill="url(#craftMakhana)" />
+      <circle cx="-50" cy="-90" r="46" fill="url(#craftMakhana)" />
+      <circle cx="50" cy="-90" r="48" fill="url(#craftMakhana)" />
+      <!-- Apex Puff -->
+      <circle cx="0" cy="-125" r="52" fill="url(#craftMakhana)" />
+      <circle cx="-10" cy="-120" r="4" fill="#8C5C26" opacity="0.6" />
+      <circle cx="12" cy="-130" r="3.5" fill="#75471B" opacity="0.6" />
+    </g>
+
+    <!-- Artisanal Hands Inspecting Quality (Grading Jumbo Grade A) -->
+    <g transform="translate(140, -130)">
+      <path d="M 0 0 C 25 -20, 50 -10, 40 20 C 35 35, 10 40, -5 25 Z" fill="#C99363" stroke="#8C582B" stroke-width="1.5" />
+      <circle cx="15" cy="8" r="18" fill="url(#craftMakhana)" stroke="#B89E78" stroke-width="1" />
+    </g>
+  </g>
+
+  <!-- Title Badge Inside Artwork -->
+  <g transform="translate(60, 60)">
+    <text x="0" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#E5C778" letter-spacing="3">TRADITIONAL BIHAR HARVEST &amp; SELECTION</text>
+    <text x="0" y="55" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="#FAF7F2">Hand-Sorted Jumbo Quality</text>
+    <text x="0" y="80" font-family="'Noto Serif Devanagari', serif" font-size="15" fill="#C59B27">हाथों से चुनी हुई सबसे शुद्ध मखाना गुणवत्ता</text>
+  </g>
+</svg>

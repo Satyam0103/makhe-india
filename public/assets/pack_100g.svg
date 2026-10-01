@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 680" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="makhanaPuff100" cx="45%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="65%" stop-color="#FAF5EC" />
+      <stop offset="100%" stop-color="#D9C7AC" />
+    </radialGradient>
+    <filter id="packShadow100" x="-15%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#0E0805" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Ground Contact Shadow -->
+  <ellipse cx="250" cy="640" rx="190" ry="24" fill="#140A06" opacity="0.4" filter="blur(10px)" />
+
+  <!-- Pouch Body (Authentic Makhé India "Apna Makhana" Standup Pack) -->
+  <g filter="url(#packShadow100)">
+    <!-- Stand-Up Pouch Outline with Soft Gusset Bottom -->
+    <path d="M 85 40 
+             L 415 40 
+             L 440 590 
+             C 440 630, 60 630, 60 590 
+             Z" 
+          fill="#FAF8F3" 
+          stroke="#D8CCA8" 
+          stroke-width="2.5" />
+
+    <!-- Top Crimped Seal with Tear Notch -->
+    <rect x="80" y="40" width="340" height="30" fill="#EFE8D6" stroke="#BAA780" stroke-width="1.2" />
+    <line x1="90" y1="55" x2="410" y2="55" stroke="#AA956C" stroke-width="1.8" stroke-dasharray="6 3" />
+    <!-- Tear notches -->
+    <path d="M 80 50 L 90 55 L 80 60 Z" fill="#8C6E48" />
+    <path d="M 420 50 L 410 55 L 420 60 Z" fill="#8C6E48" />
+
+    <!-- Corner Lotus Vines (Coral Pink & Botanical Green) -->
+    <!-- Top Left -->
+    <g transform="translate(95, 75)">
+      <path d="M 8 8 Q 28 -5, 42 12 Q 22 30, 8 8 Z" fill="#3D5A42" />
+      <circle cx="22" cy="24" r="14" fill="#D84457" />
+      <circle cx="20" cy="20" r="10" fill="#EB6374" />
+      <circle cx="18" cy="18" r="5" fill="#FFE585" />
+    </g>
+    <!-- Top Right -->
+    <g transform="translate(340, 75)">
+      <path d="M 38 8 Q 18 -5, 4 12 Q 24 30, 38 8 Z" fill="#3D5A42" />
+      <circle cx="24" cy="24" r="14" fill="#D84457" />
+      <circle cx="26" cy="20" r="10" fill="#EB6374" />
+      <circle cx="28" cy="18" r="5" fill="#FFE585" />
+    </g>
+
+    <!-- Brand Header -->
+    <g transform="translate(250, 150)">
+      <!-- Official Lotus Insignia in Circle -->
+      <circle cx="0" cy="-22" r="18" fill="#1C1008" stroke="#DCA24E" stroke-width="1" />
+      <path d="M -9 -24 C -6 -32, 0 -30, 0 -22 C 0 -30, 6 -32, 9 -24 Z" fill="#FAF5EC" />
+      <!-- Makhé India -->
+      <text x="0" y="8" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="28" font-weight="700" fill="#281A12" letter-spacing="2">
+        Makhé India
+      </text>
+    </g>
+
+    <!-- Subtitle & Main Title -->
+    <g transform="translate(250, 205)">
+      <text x="0" y="0" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#84582C" letter-spacing="3">
+        PREMIUM QUALITY
+      </text>
+      <!-- Title: "APNA MAKHANA" -->
+      <text x="0" y="32" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="800" fill="#1C110B" letter-spacing="3">
+        APNA
+      </text>
+      <text x="0" y="68" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="38" font-weight="800" fill="#1C110B" letter-spacing="4">
+        MAKHANA
+      </text>
+      <!-- Tagline -->
+      <text x="0" y="94" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#6E4F2E" letter-spacing="1">
+        POPPED WITH PURITY, PACKED WITH POWER
+      </text>
+    </g>
+
+    <!-- Circular Window showing Crisp Puffed White Makhana (Left side) -->
+    <g transform="translate(195, 400)">
+      <circle cx="0" cy="0" r="76" fill="#1A110B" stroke="#B88A44" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="72" fill="#FAF5EC" />
+
+      <!-- Puffed Makhana Inside Window -->
+      <g stroke="#C6B59D" stroke-width="0.8">
+        <circle cx="-30" cy="-28" r="22" fill="url(#makhanaPuff100)" />
+        <circle cx="28" cy="-26" r="24" fill="url(#makhanaPuff100)" />
+        <circle cx="-35" cy="18" r="20" fill="url(#makhanaPuff100)" />
+        <circle cx="32" cy="16" r="22" fill="url(#makhanaPuff100)" />
+        <circle cx="0" cy="-38" r="18" fill="url(#makhanaPuff100)" />
+        <circle cx="0" cy="0" r="28" fill="url(#makhanaPuff100)" />
+        <circle cx="-6" cy="-4" r="2.5" fill="#693F16" opacity="0.6" />
+        <circle cx="10" cy="6" r="2" fill="#693F16" opacity="0.6" />
+      </g>
+    </g>
+
+    <!-- Illustrated Farmer in Traditional Turban Holding Makhana (Right side) -->
+    <g transform="translate(340, 410)">
+      <path d="M -30 -50 C -40 -70, 30 -75, 40 -50 C 45 -35, -20 -35, -30 -50 Z" fill="#D94326" />
+      <path d="M -20 -55 Q 0 -68, 25 -52" stroke="#FAF2DC" stroke-width="1.8" fill="none" />
+      <ellipse cx="5" cy="-25" rx="18" ry="20" fill="#C98B58" />
+      <path d="M -8 -15 Q 5 -10, 18 -15" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" />
+      <path d="M -35 0 L 45 0 L 52 90 L -42 90 Z" fill="#DDA027" />
+      <ellipse cx="5" cy="55" rx="22" ry="16" fill="#C98B58" />
+      <circle cx="-5" cy="50" r="9" fill="#FAF5EC" />
+      <circle cx="10" cy="48" r="10" fill="#FAF5EC" />
+    </g>
+
+    <!-- Bottom Weight Ribbon & Features -->
+    <g transform="translate(250, 560)">
+      <!-- 100 GM PACK Gold Badge -->
+      <rect x="-105" y="0" width="210" height="32" rx="4" fill="#C59438" />
+      <text x="0" y="21" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#140B06" letter-spacing="2">
+        100 GM PACK
+      </text>
+
+      <!-- Bottom Badges -->
+      <g transform="translate(0, 48)">
+        <text x="-90" y="0" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#1C110B">100% NATURAL</text>
+        <text x="0" y="0" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#1C110B">HIGH PROTEIN</text>
+        <text x="90" y="0" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="700" fill="#1C110B">GLUTEN FREE</text>
+      </g>
+    </g>
+  </g>
+</svg>

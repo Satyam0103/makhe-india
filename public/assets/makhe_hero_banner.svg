@@ -1,0 +1,556 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <!-- Sky & Golden Sunset Gradients -->
+    <linearGradient id="sunsetSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D1910" />
+      <stop offset="25%" stop-color="#5A2E19" />
+      <stop offset="50%" stop-color="#9E5124" />
+      <stop offset="70%" stop-color="#D67B33" />
+      <stop offset="85%" stop-color="#F2A84E" />
+      <stop offset="100%" stop-color="#FDDF8E" />
+    </linearGradient>
+
+    <!-- Glowing River Horizon Sun -->
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1" />
+      <stop offset="18%" stop-color="#FFF2B8" stop-opacity="0.95" />
+      <stop offset="40%" stop-color="#F7B855" stop-opacity="0.65" />
+      <stop offset="75%" stop-color="#D86B20" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#7B3A18" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- River Ganga Water Surface -->
+    <linearGradient id="gangaRiver" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A85B22" />
+      <stop offset="20%" stop-color="#733B16" />
+      <stop offset="50%" stop-color="#3F1C0B" />
+      <stop offset="100%" stop-color="#190B05" />
+    </linearGradient>
+
+    <linearGradient id="waterReflection" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF0B0" stop-opacity="0.9" />
+      <stop offset="35%" stop-color="#F6BA56" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#A85B22" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Stone Pillar & Wall Shading -->
+    <linearGradient id="templeStone" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#120A07" />
+      <stop offset="30%" stop-color="#24160E" />
+      <stop offset="70%" stop-color="#362217" />
+      <stop offset="100%" stop-color="#180D08" />
+    </linearGradient>
+
+    <!-- Antique Wooden Ammo Crate (MIRZAPUR) -->
+    <linearGradient id="crateWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2B1D15" />
+      <stop offset="50%" stop-color="#1C120C" />
+      <stop offset="100%" stop-color="#100A06" />
+    </linearGradient>
+
+    <!-- Crimson Velvet Draped Runner -->
+    <linearGradient id="crimsonVelvet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#781119" />
+      <stop offset="45%" stop-color="#4E0B11" />
+      <stop offset="100%" stop-color="#220407" />
+    </linearGradient>
+
+    <!-- Beaten Hammered Brass Katori Bowl -->
+    <linearGradient id="hammeredBrass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE899" />
+      <stop offset="25%" stop-color="#DDA93C" />
+      <stop offset="50%" stop-color="#936717" />
+      <stop offset="75%" stop-color="#DFB44A" />
+      <stop offset="100%" stop-color="#553807" />
+    </linearGradient>
+
+    <!-- Puffed Jumbo Makhana Shading -->
+    <radialGradient id="makhanaPuff" cx="42%" cy="36%" r="58%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="55%" stop-color="#FCF8EE" />
+      <stop offset="85%" stop-color="#EDE0C8" />
+      <stop offset="100%" stop-color="#CBB38D" />
+    </radialGradient>
+
+    <!-- Cutting Chai Glass & Amber Tea -->
+    <linearGradient id="amberChai" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EAB27A" />
+      <stop offset="35%" stop-color="#C77D43" />
+      <stop offset="100%" stop-color="#84471A" />
+    </linearGradient>
+
+    <!-- White Stand-Up Pouch Body (Apna Makhana) -->
+    <linearGradient id="whitePouchBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8E2D5" />
+      <stop offset="15%" stop-color="#F9F6F0" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="85%" stop-color="#F9F6F0" />
+      <stop offset="100%" stop-color="#DCD5C6" />
+    </linearGradient>
+
+    <!-- Deep Drop Shadows -->
+    <filter id="pouchShadow" x="-25%" y="-15%" width="150%" height="140%">
+      <feDropShadow dx="-8" dy="24" stdDeviation="20" flood-color="#080402" flood-opacity="0.88" />
+    </filter>
+    <filter id="bowlShadow" x="-30%" y="-20%" width="160%" height="150%">
+      <feDropShadow dx="0" dy="25" stdDeviation="18" flood-color="#080402" flood-opacity="0.85" />
+    </filter>
+    <filter id="chaiShadow" x="-30%" y="-20%" width="160%" height="150%">
+      <feDropShadow dx="12" dy="20" stdDeviation="14" flood-color="#080402" flood-opacity="0.75" />
+    </filter>
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="#FFF2B8" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 1. BACKGROUND: Sunset Sky Over River Ganga -->
+  <!-- ========================================== -->
+  <rect width="1600" height="900" fill="url(#sunsetSky)" />
+
+  <!-- Glowing Sun on River Horizon -->
+  <circle cx="1340" cy="510" r="160" fill="url(#sunGlow)" />
+  <circle cx="1340" cy="510" r="26" fill="#FFFFFF" />
+
+  <!-- Distant Varanasi / Mirzapur Ghat Temples & Shikhara Silhouettes -->
+  <g fill="#3D1F11" opacity="0.85">
+    <!-- Left Mid-distance Temple Spire -->
+    <path d="M 610 535 L 625 480 L 640 535 Z" />
+    <path d="M 645 535 L 660 460 L 675 535 Z" />
+    <!-- Far Ghat Shoreline & Secondary Temples -->
+    <path d="M 980 535 L 1000 475 L 1020 535 Z" />
+    <path d="M 1035 535 L 1055 450 L 1075 535 Z" />
+    <path d="M 1120 535 L 1135 485 L 1150 535 Z" />
+    <!-- Main Iconic Temple Shikhara Right (Rising into Sunset) -->
+    <path d="M 1490 535 L 1530 310 L 1570 535 Z" fill="#32170B" />
+    <path d="M 1505 325 C 1520 260, 1540 260, 1555 325 Z" fill="#241007" />
+    <circle cx="1530" cy="265" r="4.5" fill="#241007" />
+    <!-- Kalash & Trishul Finial on Spire -->
+    <line x1="1530" y1="260" x2="1530" y2="245" stroke="#241007" stroke-width="2" />
+    <!-- Secondary Spire Right -->
+    <path d="M 1565 535 L 1590 380 L 1615 535 Z" fill="#3D1F11" />
+    <!-- Horizontal Ghat Steps (Pauris) on the Horizon -->
+    <rect x="960" y="530" width="640" height="10" fill="#2B140A" />
+    <rect x="1000" y="538" width="600" height="8" fill="#1E0D06" />
+  </g>
+
+  <!-- Crimson Temple Flags Fluttering at Top Right -->
+  <g transform="translate(1390, 0)">
+    <line x1="20" y1="0" x2="20" y2="340" stroke="#1F0E07" stroke-width="4.5" />
+    <path d="M 22 25 Q 100 50, 185 20 Q 120 100, 22 110 Z" fill="#8C1414" />
+    <path d="M 22 110 Q 90 135, 165 105 Q 100 175, 22 185 Z" fill="#A41C1C" />
+  </g>
+
+  <!-- Holy River Ganga Water Surface -->
+  <rect x="0" y="535" width="1600" height="365" fill="url(#gangaRiver)" />
+
+  <!-- Shimmering Golden Sun Reflections on Calm River Water -->
+  <polygon points="1340,535 1250,710 1430,710" fill="url(#waterReflection)" />
+  <g stroke="#FDE8A0" stroke-width="2" opacity="0.65">
+    <line x1="1290" y1="548" x2="1390" y2="548" stroke-dasharray="25 15" />
+    <line x1="1260" y1="562" x2="1420" y2="562" stroke-dasharray="35 12" />
+    <line x1="1225" y1="580" x2="1455" y2="580" stroke-dasharray="45 18" />
+    <line x1="1185" y1="605" x2="1495" y2="605" stroke-dasharray="55 20" />
+    <line x1="1145" y1="635" x2="1515" y2="635" stroke-dasharray="65 24" />
+    <line x1="1100" y1="670" x2="1535" y2="670" stroke-dasharray="75 25" />
+  </g>
+
+  <!-- Traditional Wooden River Boats & Oarsmen Silhouettes -->
+  <g fill="#241007">
+    <!-- Mid-River Boat 1 -->
+    <path d="M 1030 585 Q 1115 605, 1220 585 Q 1115 595, 1030 585 Z" />
+    <rect x="1110" y="570" width="18" height="16" rx="3" />
+    <ellipse cx="1119" cy="562" rx="4" ry="5.5" />
+    <line x1="1115" y1="575" x2="1085" y2="596" stroke="#241007" stroke-width="2.5" />
+
+    <!-- Distant Boat 2 -->
+    <path d="M 830 555 Q 885 568, 950 555 Q 885 562, 830 555 Z" opacity="0.8" />
+    <ellipse cx="890" cy="548" rx="3" ry="4" opacity="0.8" />
+
+    <!-- Right River Boat 3 -->
+    <path d="M 1310 575 Q 1365 588, 1420 575 Q 1365 582, 1310 575 Z" opacity="0.85" />
+  </g>
+
+  <!-- Silhouette of Devotee / Pilgrim Sitting on Ghat Wall Looking at Ganga -->
+  <g transform="translate(1290, 420)">
+    <!-- Turban & Head -->
+    <ellipse cx="65" cy="45" rx="20" ry="24" fill="#180C07" />
+    <path d="M 50 35 C 55 18, 85 20, 88 40 Z" fill="#24130A" />
+    <!-- Shawl Draped Torso -->
+    <path d="M 40 68 C 10 120, 15 230, 50 260 L 155 260 C 175 210, 155 100, 110 68 Z" fill="#180C07" />
+    <path d="M 50 72 Q 85 140, 120 75" fill="none" stroke="#321A0E" stroke-width="2.2" />
+    <path d="M 42 120 Q 80 195, 135 130" fill="none" stroke="#26140B" stroke-width="2.5" />
+  </g>
+
+  <!-- ==================================================== -->
+  <!-- 2. LEFT SIDE: Ancient Carved Stone Architecture &     -->
+  <!--    Vintage Ammo Chest Stenciled "MIRZAPUR"           -->
+  <!-- ==================================================== -->
+  <g>
+    <!-- Deep Shadow Wall Left -->
+    <rect x="0" y="0" width="440" height="900" fill="#0E0805" />
+
+    <!-- Massive Mirzapur Carved Temple Pillar -->
+    <path d="M 150 0 L 255 0 L 245 590 L 130 590 Z" fill="url(#templeStone)" />
+    <!-- Pillar Capital & Cornice Stone Moldings -->
+    <rect x="120" y="75" width="145" height="20" fill="#26150D" stroke="#0A0503" stroke-width="2" />
+    <rect x="130" y="95" width="125" height="14" fill="#1A0D07" />
+    <rect x="115" y="145" width="155" height="26" fill="#26150D" stroke="#0A0503" stroke-width="1.5" />
+    <!-- Midground Pillar -->
+    <path d="M 370 0 L 450 0 L 430 540 L 350 540 Z" fill="#160D08" />
+    <rect x="340" y="105" width="115" height="18" fill="#24140D" />
+
+    <!-- Golden Ochre Carved Inscription on Stone Wall: "मिर्ज़ापुर" with 3-Point Crown -->
+    <g transform="translate(180, 150)" opacity="0.75">
+      <!-- 3-Point Crown Motif -->
+      <path d="M 80 50 L 92 68 L 105 48 L 118 68 L 130 50 L 126 80 L 84 80 Z" fill="#C58A3C" />
+      <circle cx="80" cy="46" r="3.5" fill="#E8B568" />
+      <circle cx="105" cy="44" r="3.5" fill="#E8B568" />
+      <circle cx="130" cy="46" r="3.5" fill="#E8B568" />
+      <!-- Devanagari "मिर्ज़ापुर" Text -->
+      <text x="105" y="125" text-anchor="middle" font-family="'Noto Serif Devanagari', 'Playfair Display', serif" font-size="52" font-weight="700" fill="#C58A3C" letter-spacing="4">
+        मिर्ज़ापुर
+      </text>
+    </g>
+
+    <!-- Foreground Left: Vintage Wooden & Metal-Reinforced Ammo Chest -->
+    <g transform="translate(-40, 480)">
+      <!-- Chest Main Body -->
+      <rect x="40" y="40" width="410" height="345" rx="6" fill="url(#crateWood)" stroke="#090503" stroke-width="3.5" />
+      <!-- Metal Reinforcing Corner Straps with Rivets -->
+      <rect x="50" y="40" width="30" height="345" fill="#22150D" stroke="#0A0503" stroke-width="1" />
+      <rect x="390" y="40" width="30" height="345" fill="#22150D" stroke="#0A0503" stroke-width="1" />
+      <rect x="40" y="90" width="410" height="26" fill="#1C110A" />
+      <rect x="40" y="325" width="410" height="26" fill="#1C110A" />
+      <!-- Brass Rivets -->
+      <circle cx="65" cy="103" r="3.5" fill="#936717" />
+      <circle cx="405" cy="103" r="3.5" fill="#936717" />
+      <circle cx="65" cy="338" r="3.5" fill="#936717" />
+      <circle cx="405" cy="338" r="3.5" fill="#936717" />
+      <circle cx="65" cy="220" r="3.5" fill="#936717" />
+      <circle cx="405" cy="220" r="3.5" fill="#936717" />
+
+      <!-- Weathered Stenciled Word "MIRZAPUR" in Gold on Chest Face -->
+      <text x="240" y="240" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="38" font-weight="900" fill="#7E562A" letter-spacing="8" opacity="0.85">
+        MIRZAPUR
+      </text>
+
+      <!-- Vintage Prop Rifle Barrel Resting on Chest -->
+      <line x1="85" y1="365" x2="-25" y2="200" stroke="#0B0604" stroke-width="28" stroke-linecap="round" />
+      <line x1="85" y1="365" x2="-25" y2="200" stroke="#3D2E24" stroke-width="18" stroke-linecap="round" />
+      <line x1="85" y1="365" x2="-25" y2="200" stroke="#B88E4B" stroke-width="4.5" stroke-dasharray="14 42" stroke-linecap="round" />
+
+      <!-- Rich Crimson Velvet Fabric Draped Over Ammo Chest -->
+      <path d="M 60 40 Q 145 125, 185 285 Q 125 225, 40 185 Z" fill="url(#crimsonVelvet)" />
+      <!-- Golden Tassel on Cushion Corner -->
+      <path d="M 185 285 L 202 335 L 175 335 Z" fill="#DFA844" />
+      <circle cx="188" cy="336" r="3" fill="#DFA844" />
+    </g>
+  </g>
+
+  <!-- Foreground Carved Stone Ledge Floor Across the Entire Bottom -->
+  <path d="M 0 710 L 1600 710 L 1600 900 L 0 900 Z" fill="#160E09" />
+  <line x1="0" y1="710" x2="1600" y2="710" stroke="#422919" stroke-width="4.5" />
+  <line x1="0" y1="718" x2="1600" y2="718" stroke="#0B0604" stroke-width="2" />
+
+  <!-- ================================================================= -->
+  <!-- 3. TOP RIGHT: Official Brand Logo & Famous Hindi Slogan Campaign   -->
+  <!-- ================================================================= -->
+  <g transform="translate(1190, 60)">
+    
+    <!-- Golden Circular Lotus Blossom Insignia -->
+    <g transform="translate(0, 50)">
+      <circle cx="0" cy="0" r="52" fill="#1C100A" stroke="#7A4D1F" stroke-width="2" />
+      <circle cx="0" cy="0" r="46" fill="#0F0804" stroke="#DFB44A" stroke-width="1.8" />
+      <!-- Sacred Lotus Flower Petals with Stylized "M" Crest -->
+      <path d="M -26 -6 C -22 -24, -6 -18, 0 3 C 6 -18, 22 -24, 26 -6 C 22 14, 0 20, 0 20 C 0 20, -22 14, -26 -6 Z" fill="#E8B54C" />
+      <path d="M -16 -2 C -12 -14, 0 -8, 0 6 C 0 -8, 12 -14, 16 -2 C 12 8, 0 12, 0 12 C 0 12, -12 8, -16 -2 Z" fill="#FAF5EC" />
+      <circle cx="0" cy="-12" r="3.8" fill="#E8B54C" />
+    </g>
+
+    <!-- Brand Typography Header -->
+    <g transform="translate(0, 138)">
+      <text x="0" y="0" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="44" font-weight="800" fill="#EBD7BA" letter-spacing="3">
+        Makhé India
+      </text>
+      <text x="0" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11.5" font-weight="800" fill="#C58E3C" letter-spacing="7">
+        PURE • NATURAL • NUTRITIOUS
+      </text>
+
+      <!-- Ornamental Lotus Divider -->
+      <g transform="translate(0, 48)">
+        <line x1="-160" y1="0" x2="-28" y2="0" stroke="#9A692C" stroke-width="1.2" />
+        <path d="M -12 4 C -8 -6, 0 -7, 0 0 C 0 -7, 8 -6, 12 4 Z" fill="#E8B54C" />
+        <circle cx="0" cy="-2" r="2" fill="#FAF5EC" />
+        <line x1="28" y1="0" x2="160" y2="0" stroke="#9A692C" stroke-width="1.2" />
+      </g>
+    </g>
+
+    <!-- Famous Authentic Devanagari Hindi Campaign Slogan -->
+    <g transform="translate(0, 245)">
+      <!-- Line 1: जितना साफ़ खाएँगे -->
+      <text x="0" y="0" text-anchor="middle" font-family="'Noto Serif Devanagari', 'Playfair Display', Georgia, serif" font-size="52" font-weight="900" fill="#FAF5EC" filter="url(#subtleGlow)" letter-spacing="1">
+        जितना साफ़ खाएँगे
+      </text>
+      <!-- Line 2: उतना ही लंबा जियेंगे -->
+      <text x="0" y="60" text-anchor="middle" font-family="'Noto Serif Devanagari', 'Playfair Display', Georgia, serif" font-size="52" font-weight="900" fill="#FAF5EC" filter="url(#subtleGlow)" letter-spacing="1">
+        उतना ही लंबा जियेंगे
+      </text>
+
+      <!-- Bottom Ornamental Lotus Flourish -->
+      <g transform="translate(0, 105)">
+        <line x1="-160" y1="0" x2="-28" y2="0" stroke="#9A692C" stroke-width="1.2" />
+        <path d="M -12 4 C -8 -6, 0 -7, 0 0 C 0 -7, 8 -6, 12 4 Z" fill="#E8B54C" />
+        <circle cx="0" cy="-2" r="2" fill="#FAF5EC" />
+        <line x1="28" y1="0" x2="160" y2="0" stroke="#9A692C" stroke-width="1.2" />
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 4. RIGHT FOREGROUND TABLETOP: Beaten Brass Katori Bowl, Scattered Makhana, -->
+  <!--    Traditional Cutting Chai, and Crimson Velvet Runner with Gold Zari     -->
+  <!-- ========================================================================= -->
+  <g>
+    <!-- Crimson Embroidered Velvet Runner Under Bowl & Chai -->
+    <path d="M 940 790 Q 1150 780, 1600 810 L 1600 900 L 910 900 Z" fill="url(#crimsonVelvet)" />
+    <!-- Golden Zari Border Embroidery -->
+    <path d="M 940 792 Q 1150 782, 1600 812" stroke="#DFB44A" stroke-width="3" fill="none" stroke-dasharray="8 4" />
+    <path d="M 945 798 Q 1155 788, 1600 818" stroke="#9A692C" stroke-width="1.5" fill="none" />
+
+    <!-- A. Handcrafted Beaten Brass Katori Bowl Overflowing with Jumbo Makhana -->
+    <g transform="translate(930, 725)" filter="url(#bowlShadow)">
+      <!-- Bowl Drop Shadow -->
+      <ellipse cx="0" cy="65" rx="160" ry="24" fill="#080402" opacity="0.8" />
+
+      <!-- Beaten Brass Bowl Body -->
+      <path d="M -150 0 C -150 90, -100 110, 0 110 C 100 110, 150 90, 150 0 Z" fill="url(#hammeredBrass)" stroke="#3E2805" stroke-width="2" />
+      <ellipse cx="0" cy="0" rx="150" ry="22" fill="#966C15" stroke="#FDEBB0" stroke-width="1.2" />
+      <ellipse cx="0" cy="0" rx="142" ry="18" fill="#3D2908" />
+
+      <!-- Overflowing Jumbo Puffed Makhana Piles in Brass Bowl -->
+      <g stroke="#C2B095" stroke-width="0.8">
+        <!-- Base Layer Puffs -->
+        <circle cx="-100" cy="-15" r="26" fill="url(#makhanaPuff)" />
+        <circle cx="100" cy="-15" r="28" fill="url(#makhanaPuff)" />
+        <circle cx="-60" cy="-35" r="30" fill="url(#makhanaPuff)" />
+        <circle cx="60" cy="-35" r="32" fill="url(#makhanaPuff)" />
+        <circle cx="0" cy="-35" r="34" fill="url(#makhanaPuff)" />
+        
+        <!-- Upper Layer Puffs -->
+        <circle cx="-30" cy="-60" r="28" fill="url(#makhanaPuff)" />
+        <circle cx="30" cy="-60" r="30" fill="url(#makhanaPuff)" />
+        <circle cx="0" cy="-80" r="32" fill="url(#makhanaPuff)" />
+
+        <!-- Authentic Roasted Brown Spots & Crevices on Toasted Fox Nuts -->
+        <circle cx="-2" cy="-82" r="3" fill="#693F16" opacity="0.75" />
+        <circle cx="28" cy="-58" r="2.5" fill="#693F16" opacity="0.65" />
+        <circle cx="-32" cy="-56" r="2.8" fill="#693F16" opacity="0.75" />
+        <circle cx="58" cy="-32" r="2.4" fill="#693F16" opacity="0.65" />
+        <circle cx="-58" cy="-32" r="2.4" fill="#693F16" opacity="0.65" />
+        <circle cx="2" cy="-34" r="3.2" fill="#693F16" opacity="0.75" />
+
+        <!-- Puffs Spilling Naturally Over Bowl Rim -->
+        <circle cx="-110" cy="10" r="22" fill="url(#makhanaPuff)" />
+        <circle cx="110" cy="12" r="24" fill="url(#makhanaPuff)" />
+        <circle cx="-108" cy="8" r="2.2" fill="#693F16" opacity="0.7" />
+        <circle cx="112" cy="14" r="2.2" fill="#693F16" opacity="0.7" />
+      </g>
+    </g>
+
+    <!-- B. Scattered Puffed Makhana on the Stone Ledge & Fabric -->
+    <g transform="translate(840, 785)">
+      <circle cx="0" cy="0" r="18" fill="url(#makhanaPuff)" stroke="#C2B095" stroke-width="0.8" />
+      <circle cx="2" cy="-2" r="2.4" fill="#693F16" opacity="0.75" />
+    </g>
+    <g transform="translate(895, 790)">
+      <circle cx="0" cy="0" r="17" fill="url(#makhanaPuff)" stroke="#C2B095" stroke-width="0.8" />
+      <circle cx="-2" cy="1" r="2.2" fill="#693F16" opacity="0.75" />
+    </g>
+    <g transform="translate(1115, 770)">
+      <circle cx="0" cy="0" r="16" fill="url(#makhanaPuff)" stroke="#C2B095" stroke-width="0.8" />
+      <circle cx="1" cy="-2" r="2" fill="#693F16" opacity="0.65" />
+    </g>
+    <g transform="translate(1105, 805)">
+      <circle cx="0" cy="0" r="18" fill="url(#makhanaPuff)" stroke="#C2B095" stroke-width="0.8" />
+      <circle cx="-2" cy="2" r="2.5" fill="#693F16" opacity="0.75" />
+    </g>
+
+    <!-- C. Traditional Indian Fluted Cutting Chai Glass in Sunset Lighting -->
+    <g transform="translate(1240, 720)" filter="url(#chaiShadow)">
+      <!-- Contact Shadow -->
+      <ellipse cx="25" cy="95" rx="45" ry="12" fill="#0A0503" opacity="0.75" />
+      <!-- Glass Outer Contour -->
+      <path d="M 0 0 L 50 0 L 42 90 L 8 90 Z" fill="#FBF8EE" opacity="0.25" stroke="#FFFFFF" stroke-width="1.5" />
+      <!-- Steaming Spiced Tea inside Glass -->
+      <path d="M 4 20 L 46 20 L 40 86 L 10 86 Z" fill="url(#amberChai)" />
+      <!-- Chai Milk Cream Surface -->
+      <ellipse cx="25" cy="20" rx="21" ry="5" fill="#E8B785" />
+      <!-- Glass Facet Fluting & Reflections -->
+      <line x1="12" y1="20" x2="15" y2="86" stroke="#FFFFFF" stroke-width="1.2" opacity="0.45" />
+      <line x1="25" y1="20" x2="25" y2="86" stroke="#FFFFFF" stroke-width="1.8" opacity="0.6" />
+      <line x1="38" y1="20" x2="35" y2="86" stroke="#FFFFFF" stroke-width="1.2" opacity="0.45" />
+      <!-- Subtle Golden Light Catch on Rim -->
+      <ellipse cx="25" cy="0" rx="25" ry="4" fill="none" stroke="#FFF2B8" stroke-width="1.5" opacity="0.8" />
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- 5. CENTERPIECE: The Official Makhé India "APNA MAKHANA" Stand-Up Pouch     -->
+  <!-- ========================================================================= -->
+  <g transform="translate(560, 480)" filter="url(#pouchShadow)">
+    
+    <!-- Base Contact Shadow under Pouch -->
+    <ellipse cx="0" cy="245" rx="200" ry="24" fill="#080402" opacity="0.9" filter="blur(16px)" />
+
+    <!-- A. White Pouch Main Body -->
+    <path d="M -190 -220 
+             C -190 -220, -170 -245, 0 -245 
+             C 170 -245, 190 -220, 190 -220 
+             L 205 200 
+             C 205 235, 160 245, 0 245 
+             C -160 245, -205 235, -205 200 Z" 
+          fill="url(#whitePouchBody)" 
+          stroke="#C8C0B0" 
+          stroke-width="1.5" />
+
+    <!-- Top Heat-Sealed Header with Golden Accent & Tear Notch -->
+    <path d="M -190 -220 C -170 -245, 0 -245, 0 -245 C 0 -245, 170 -245, 190 -220 L 195 -185 L -195 -185 Z" fill="#F4EEE4" stroke="#D5CCBD" stroke-width="1" />
+    <line x1="-185" y1="-205" x2="185" y2="-205" stroke="#C59438" stroke-width="1.2" opacity="0.7" stroke-dasharray="6 3" />
+    <polygon points="-195,-200 -185,-197 -195,-194" fill="#8C6527" />
+    <polygon points="195,-200 185,-197 195,-194" fill="#8C6527" />
+
+    <!-- B. Watercolor Painted Floral Garland at Top of Pouch (Pink Lotuses & Leaves) -->
+    <g transform="translate(0, -165)">
+      <!-- Left Floral Bouquet -->
+      <g transform="translate(-130, 0)">
+        <path d="M -30 -10 C -40 10, -20 20, 0 0 C -10 -20, -25 -20, -30 -10 Z" fill="#2E693D" opacity="0.85" />
+        <circle cx="-15" cy="-5" r="14" fill="#C93B58" opacity="0.9" />
+        <circle cx="-18" cy="-8" r="10" fill="#E86580" />
+        <circle cx="-12" cy="8" r="10" fill="#E87C48" opacity="0.85" />
+        <circle cx="-5" cy="-2" r="5" fill="#FFE28A" />
+      </g>
+      <!-- Right Floral Bouquet -->
+      <g transform="translate(130, 0) scale(-1, 1)">
+        <path d="M -30 -10 C -40 10, -20 20, 0 0 C -10 -20, -25 -20, -30 -10 Z" fill="#2E693D" opacity="0.85" />
+        <circle cx="-15" cy="-5" r="14" fill="#C93B58" opacity="0.9" />
+        <circle cx="-18" cy="-8" r="10" fill="#E86580" />
+        <circle cx="-12" cy="8" r="10" fill="#E87C48" opacity="0.85" />
+        <circle cx="-5" cy="-2" r="5" fill="#FFE28A" />
+      </g>
+    </g>
+
+    <!-- C. Official Brand Logo Emblem on Pouch -->
+    <g transform="translate(0, -145)">
+      <circle cx="0" cy="0" r="28" fill="#1C100A" stroke="#C59438" stroke-width="1.5" />
+      <path d="M -14 -4 C -12 -14, -3 -10, 0 2 C 3 -10, 12 -14, 14 -4 C 12 8, 0 11, 0 11 C 0 11, -12 8, -14 -4 Z" fill="#E8B54C" />
+      <path d="M -9 -2 C -7 -9, 0 -5, 0 4 C 0 -5, 7 -9, 9 -2 C 7 5, 0 7, 0 7 C 0 7, -7 5, -9 -2 Z" fill="#FAF5EC" />
+      <text x="0" y="24" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="19" font-weight="900" fill="#180E08">
+        Makhé India
+      </text>
+    </g>
+
+    <!-- D. "PREMIUM QUALITY" Curved Banner Arc -->
+    <g transform="translate(0, -78)">
+      <path d="M -70 8 Q 0 -4, 70 8" fill="none" stroke="#C59438" stroke-width="1" />
+      <text x="0" y="0" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#8C6527" letter-spacing="3">
+        PREMIUM QUALITY
+      </text>
+    </g>
+
+    <!-- E. Bold Product Title: "APNA MAKHANA" -->
+    <g transform="translate(0, -50)">
+      <text x="0" y="0" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="34" font-weight="900" fill="#180E08" letter-spacing="1">
+        APNA
+      </text>
+      <text x="0" y="28" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="30" font-weight="900" fill="#180E08" letter-spacing="1">
+        MAKHANA
+      </text>
+      <text x="0" y="46" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#5A3A18" letter-spacing="1.5">
+        POPPED WITH PURITY, PACKED WITH POWER
+      </text>
+    </g>
+
+    <!-- F. Central Features: Circular Window of Makhana Bowl + Farmer in Red Turban -->
+    <g transform="translate(0, 75)">
+      
+      <!-- Left: Circular Photo Frame of Puffed Makhana Bowl -->
+      <g transform="translate(-60, 0)">
+        <circle cx="0" cy="0" r="56" fill="#0C1D13" stroke="#C59438" stroke-width="2.5" />
+        <circle cx="0" cy="0" r="52" fill="#FAF5EC" />
+        <!-- Puffed Makhana Inside Circular Window -->
+        <g stroke="#C2B095" stroke-width="0.8">
+          <circle cx="-25" cy="5" r="18" fill="url(#makhanaPuff)" />
+          <circle cx="20" cy="10" r="20" fill="url(#makhanaPuff)" />
+          <circle cx="0" cy="-20" r="22" fill="url(#makhanaPuff)" />
+          <circle cx="-15" cy="-8" r="19" fill="url(#makhanaPuff)" />
+          <circle cx="15" cy="-5" r="20" fill="url(#makhanaPuff)" />
+          <circle cx="0" cy="8" r="21" fill="url(#makhanaPuff)" />
+          <!-- Roasted Flecks -->
+          <circle cx="-2" cy="-18" r="2" fill="#693F16" opacity="0.8" />
+          <circle cx="12" cy="-4" r="2.2" fill="#693F16" opacity="0.75" />
+          <circle cx="-16" cy="-6" r="2" fill="#693F16" opacity="0.8" />
+          <circle cx="2" cy="10" r="2.4" fill="#693F16" opacity="0.75" />
+        </g>
+      </g>
+
+      <!-- Right: Indian Farmer with Saffron/Red Pagri (Turban) & Yellow Kurta -->
+      <g transform="translate(68, 5)">
+        <!-- Farmer Torso / Yellow Kurta -->
+        <path d="M -30 25 C -45 50, -40 70, -25 75 L 25 75 C 40 70, 45 50, 30 25 Z" fill="#E2A632" stroke="#B87D18" stroke-width="1.2" />
+        <path d="M -8 25 L 0 55 L 8 25 Z" fill="#FAF5EC" />
+        <!-- Farmer Face & Warm Skin -->
+        <ellipse cx="0" cy="0" rx="18" ry="21" fill="#C87B4C" />
+        <!-- Saffron & Red Turban (Pagri) with Folds -->
+        <path d="M -26 -10 C -30 -30, -5 -40, 0 -40 C 15 -40, 32 -30, 26 -10 C 22 -5, -20 -5, -26 -10 Z" fill="#C92A2A" stroke="#8E1414" stroke-width="1.5" />
+        <path d="M -20 -15 Q 0 -30, 20 -15" stroke="#E55B3C" stroke-width="3" fill="none" />
+        <path d="M -15 -25 Q 5 -36, 22 -22" stroke="#E55B3C" stroke-width="3" fill="none" />
+        <ellipse cx="0" cy="-35" rx="6" ry="5" fill="#E8A838" />
+        <!-- Face Features (Mustache, Eyes, Smile) -->
+        <ellipse cx="-6" cy="-2" rx="2.5" ry="1.5" fill="#1C0E07" />
+        <ellipse cx="6" cy="-2" rx="2.5" ry="1.5" fill="#1C0E07" />
+        <!-- Big Traditional Indian Grey/Black Mustache -->
+        <path d="M -15 8 Q -4 5, 0 11 Q 4 5, 15 8 Q 8 13, 0 13 Q -8 13, -15 8 Z" fill="#2E1C12" />
+        <!-- Cupped Hands Holding Harvested Makhana Seeds -->
+        <ellipse cx="0" cy="50" rx="22" ry="12" fill="#B86D40" />
+        <!-- White Makhana Seeds in Farmer's Hands -->
+        <circle cx="-10" cy="48" r="4.5" fill="#FFFFFF" stroke="#9A8265" stroke-width="0.5" />
+        <circle cx="-2" cy="46" r="5" fill="#FFFFFF" stroke="#9A8265" stroke-width="0.5" />
+        <circle cx="6" cy="47" r="4.8" fill="#FFFFFF" stroke="#9A8265" stroke-width="0.5" />
+        <circle cx="12" cy="50" r="4.5" fill="#FFFFFF" stroke="#9A8265" stroke-width="0.5" />
+      </g>
+    </g>
+
+    <!-- G. Bottom Pouch Seals & Certifications -->
+    <g transform="translate(0, 185)">
+      <!-- Seal 1: 100% NATURAL -->
+      <g transform="translate(-115, 0)">
+        <circle cx="0" cy="0" r="16" fill="#1A3E26" />
+        <path d="M -5 -2 Q 0 -10, 5 -2 Q 0 8, -5 -2 Z" fill="#75C288" />
+        <text x="0" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="800" fill="#180E08">100% NATURAL</text>
+      </g>
+
+      <!-- Seal 2: HIGH IN PROTEIN -->
+      <g transform="translate(-40, 0)">
+        <circle cx="0" cy="0" r="16" fill="#1A2D48" />
+        <rect x="-8" y="-4" width="16" height="8" rx="2" fill="#72A4E0" />
+        <line x1="-4" y1="-8" x2="-4" y2="8" stroke="#72A4E0" stroke-width="2" />
+        <line x1="4" y1="-8" x2="4" y2="8" stroke="#72A4E0" stroke-width="2" />
+        <text x="0" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="800" fill="#180E08">HIGH IN PROTEIN</text>
+      </g>
+
+      <!-- Seal 3: GLUTEN FREE -->
+      <g transform="translate(35, 0)">
+        <circle cx="0" cy="0" r="16" fill="#1C3824" />
+        <text x="0" y="3" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="800" fill="#FAF5EC">GF</text>
+        <text x="0" y="24" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="800" fill="#180E08">GLUTEN FREE</text>
+      </g>
+
+      <!-- Seal 4: Indian Green Vegetarian Symbol -->
+      <g transform="translate(115, -2)">
+        <rect x="-9" y="-9" width="18" height="18" fill="#FFFFFF" stroke="#1D8337" stroke-width="1.4" />
+        <circle cx="0" cy="0" r="5" fill="#1D8337" />
+      </g>
+    </g>
+  </g>
+</svg>
