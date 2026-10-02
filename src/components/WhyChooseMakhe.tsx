@@ -1,5 +1,5 @@
-import React from 'react';
-import { EditableImage } from './EditableImage';
+import React from "react";
+import { EditableImage } from "./EditableImage";
 
 interface WhyChooseCard {
   number: string;
@@ -13,62 +13,65 @@ interface WhyChooseCard {
 
 const CARDS: WhyChooseCard[] = [
   {
-    number: '01',
-    title: 'Native Sourcing',
+    number: "01",
+    title: "Native Sourcing",
     bullets: [
-      'Direct from trusted Farmer.',
-      'Single-Origin Wetland Harvest.',
-      'Local-region Ingredients.'
+      "Direct from trusted Farmer.",
+      "Single-Origin Wetland Harvest.",
+      "Local-region Ingredients.",
     ],
-    storageKey: 'why-makhe-native-sourcing',
-    defaultImage: '/images/why-choose/native-sourcing.webp',
-    alt: 'Native Makhana Sourcing from Bihar Wetlands',
-    objectPosition: 'center 28%'
+    storageKey: "why-makhe-native-sourcing",
+    defaultImage: "/images/why-choose/native-sourcing.webp",
+    alt: "Native Makhana Sourcing from Bihar Wetlands",
+    objectPosition: "center 28%",
   },
   {
-    number: '02',
-    title: 'Traditional Processing',
+    number: "02",
+    title: "Traditional Processing",
     bullets: [
-      'Naturally Popped. Never Bleached.',
-      'Traditional Hand Process.',
-      'Minimal-Impact Processing.'
+      "Naturally Popped. Never Bleached.",
+      "Traditional Hand Process.",
+      "Minimal-Impact Processing.",
     ],
-    storageKey: 'why-makhe-traditional-processing',
-    defaultImage: '/images/why-choose/traditional-processing.webp',
-    alt: 'Traditional Makhana Roasting and Hand Popping',
-    objectPosition: 'center 35%'
+    storageKey: "why-makhe-traditional-processing",
+    defaultImage: "/images/why-choose/traditional-processing.webp",
+    alt: "Traditional Makhana Roasting and Hand Popping",
+    objectPosition: "center 35%",
   },
   {
-    number: '03',
-    title: 'Modern Cleaning & Hygienic Packaging',
+    number: "03",
+    title: "Modern Cleaning & Hygienic Packaging",
     bullets: [
-      'Impurities Out. Goodness In.',
-      'Only the Best & Pure Makhana make the cut.',
-      'Pond-to-Pouch Traceability.'
+      "Impurities Out. Goodness In.",
+      "Only the Best & Pure Makhana make the cut.",
+      "Pond-to-Pouch Traceability.",
     ],
-    storageKey: 'why-makhe-modern-cleaning',
-    defaultImage: '/images/why-choose/modern-cleaning.webp',
-    alt: 'Hygienic Sorting and Modern Packaging',
-    objectPosition: 'center 35%'
+    storageKey: "why-makhe-modern-cleaning",
+    defaultImage: "/images/why-choose/modern-cleaning.webp",
+    alt: "Hygienic Sorting and Modern Packaging",
+    objectPosition: "center 35%",
   },
   {
-    number: '04',
-    title: 'Healthy Snacking',
+    number: "04",
+    title: "Healthy Snacking",
     bullets: [
-      'Natural, Healthy & Guilt-free Snacking.',
-      'Protein & Fibre Rich.',
-      'Loved by Kids. Respected by Elders.'
+      "Natural, Healthy & Guilt-free Snacking.",
+      "Protein & Fibre Rich.",
+      "Loved by Kids. Respected by Elders.",
     ],
-    storageKey: 'why-makhe-healthy-snacking',
-    defaultImage: '/images/why-choose/healthy-snacking.webp',
-    alt: 'Crisp and Healthy Roasted Makhana Snacking',
-    objectPosition: 'center 38%'
-  }
+    storageKey: "why-makhe-healthy-snacking",
+    defaultImage: "/images/why-choose/healthy-snacking.webp",
+    alt: "Crisp and Healthy Roasted Makhana Snacking",
+    objectPosition: "center 38%",
+  },
 ];
 
 export const WhyChooseMakhe: React.FC = () => {
   return (
-    <section id="why-choose" className="py-20 lg:py-28 bg-[#FAF7F2] border-b border-[#E5DAC6] relative overflow-hidden">
+    <section
+      id="why-choose"
+      className="py-14 sm:py-16 lg:py-20 bg-[#FAF7F2] border-b border-[#E5DAC6] relative overflow-hidden"
+    >
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[500px] bg-gradient-to-b from-[#F2E8D7] to-transparent rounded-full blur-3xl -z-0" />
@@ -76,7 +79,7 @@ export const WhyChooseMakhe: React.FC = () => {
 
       <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-16 space-y-2 sm:space-y-3 px-2">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 space-y-2 sm:space-y-3 px-2">
           <div className="inline-flex items-center gap-2.5">
             <span className="w-8 h-[1.5px] bg-[#C59B27]" />
             <span className="text-xs uppercase tracking-[0.28em] font-bold text-[#C59B27] font-sans-brand">
@@ -85,8 +88,8 @@ export const WhyChooseMakhe: React.FC = () => {
             <span className="w-8 h-[1.5px] bg-[#C59B27]" />
           </div>
 
-          <h2 className="text-2xl min-[400px]:text-3xl sm:text-4xl lg:text-[44px] xl:text-5xl font-serif-brand font-bold text-[#142B1A] tracking-tight leading-tight sm:whitespace-nowrap">
-            WHY CHOOSE MAKHÉ INDIA?
+          <h2 className="text-2xl min-[400px]:text-3xl sm:text-4xl lg:text-[44px] xl:text-5xl font-serif-brand font-bold text-[#142B1A] tracking-tight leading-tight">
+            Why Choose Makhé India?
           </h2>
         </div>
 

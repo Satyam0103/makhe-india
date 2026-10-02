@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
-import { Search, User, ShoppingCart, Menu, X, Phone, Mail, Instagram } from 'lucide-react';
-import { useCart } from '../context/CartContext';
-import { PageRoute } from '../types';
-import { EditableImage } from './EditableImage';
+import React, { useState } from "react";
+import {
+  Search,
+  User,
+  ShoppingCart,
+  Menu,
+  X,
+  Phone,
+  Mail,
+  Instagram,
+} from "lucide-react";
+import { useCart } from "../context/CartContext";
+import { PageRoute } from "../types";
 
 interface HeaderProps {
   currentPage: PageRoute;
@@ -13,29 +21,28 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   currentPage,
   onNavigate,
-  onOpenSearch
+  onOpenSearch,
 }) => {
   const { totalItems, setIsDrawerOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems: { label: string; route: PageRoute }[] = [
-    { label: 'Home', route: '/' },
-    { label: 'Our Story', route: '/our-story' },
-    { label: 'Blog', route: '/blog' },
-    { label: 'Contact', route: '/contact' }
+    { label: "Home", route: "/" },
+    { label: "Our Story", route: "/our-story" },
+    { label: "Blog", route: "/blog" },
+    { label: "Contact", route: "/contact" },
   ];
 
   const handleNavClick = (route: PageRoute) => {
     onNavigate(route);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <>
       <header className="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#E8DFCE] transition-all duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
-          
           {/* MOBILE LEFT: Hamburger Menu Button */}
           <div className="flex items-center md:hidden">
             <button
@@ -59,8 +66,8 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => handleNavClick(item.route)}
                   className={`relative py-1 text-sm tracking-wider uppercase transition-colors font-medium ${
                     isActive
-                      ? 'text-[#183321] font-semibold'
-                      : 'text-[#4A5D4E] hover:text-[#183321]'
+                      ? "text-[#183321] font-semibold"
+                      : "text-[#4A5D4E] hover:text-[#183321]"
                   }`}
                 >
                   {item.label}
@@ -77,18 +84,18 @@ export const Header: React.FC<HeaderProps> = ({
             <div
               role="button"
               tabIndex={0}
-              onClick={() => handleNavClick('/')}
+              onClick={() => handleNavClick("/")}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  handleNavClick('/');
+                  handleNavClick("/");
                 }
               }}
               className="inline-block transition-transform hover:scale-[1.02] focus:outline-none cursor-pointer bg-transparent border-0 shadow-none p-0"
               aria-label="Makhé India Homepage"
             >
               <img
-                src="/images/brand/makhe-india-logo.png"
+                src="/images/brand/makhe-india-logo-transparent.png"
                 alt="Makhé India"
                 className="h-10 sm:h-12 md:h-16 w-auto object-contain py-0.5 sm:py-1 transition-all bg-transparent border-0 shadow-none"
               />
@@ -111,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Account icon (hidden on small mobile, visible on desktop) */}
             <button
               type="button"
-              onClick={() => handleNavClick('/account')}
+              onClick={() => handleNavClick("/account")}
               className="hidden sm:inline-flex p-2 text-[#183321] hover:text-[#C59B27] transition-colors"
               aria-label="Account"
               title="Account"
@@ -126,8 +133,14 @@ export const Header: React.FC<HeaderProps> = ({
               className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#183321] text-[#FAF7F2] rounded-md hover:bg-[#23472F] transition-all shadow-sm group focus:outline-none"
               aria-label={`Shopping cart with ${totalItems} items`}
             >
-              <ShoppingCart size={18} strokeWidth={1.9} className="text-[#E5C778] group-hover:scale-105 transition-transform" />
-              <span className="text-xs font-semibold tracking-wider uppercase">CART</span>
+              <ShoppingCart
+                size={18}
+                strokeWidth={1.9}
+                className="text-[#E5C778] group-hover:scale-105 transition-transform"
+              />
+              <span className="text-xs font-semibold tracking-wider uppercase">
+                CART
+              </span>
               <span className="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 text-xs font-bold bg-[#C59B27] text-[#0C1D13] rounded-full">
                 {totalItems}
               </span>
@@ -146,8 +159,8 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => handleNavClick(item.route)}
                   className={`text-left text-base uppercase tracking-wider py-2 transition-colors ${
                     currentPage === item.route
-                      ? 'text-[#183321] font-bold border-l-2 border-[#C59B27] pl-3'
-                      : 'text-[#4A5D4E] hover:text-[#183321] pl-3'
+                      ? "text-[#183321] font-bold border-l-2 border-[#C59B27] pl-3"
+                      : "text-[#4A5D4E] hover:text-[#183321] pl-3"
                   }`}
                 >
                   {item.label}
@@ -156,7 +169,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 type="button"
-                onClick={() => handleNavClick('/account')}
+                onClick={() => handleNavClick("/account")}
                 className="text-left text-base uppercase tracking-wider py-2 text-[#4A5D4E] hover:text-[#183321] pl-3 flex items-center gap-2 pt-2 border-t border-[#E8DFCE]"
               >
                 <User size={18} />
@@ -178,11 +191,11 @@ export const Header: React.FC<HeaderProps> = ({
                   <span>+91 8409118082</span>
                 </a>
                 <a
-                  href="mailto:makheagro@gmail.com"
+                  href="mailto:wecare@makheindia.com"
                   className="flex items-center gap-2.5 text-[#183321] font-semibold hover:text-[#C59B27] transition-colors"
                 >
                   <Mail size={14} className="text-[#C59B27]" />
-                  <span>makheagro@gmail.com</span>
+                  <span>wecare@makheindia.com</span>
                 </a>
                 <a
                   href="https://www.instagram.com/makheindia/"

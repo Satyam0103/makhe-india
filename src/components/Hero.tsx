@@ -1,22 +1,18 @@
-import React from 'react';
-import { PageRoute } from '../types';
-import { EditableImage } from './EditableImage';
-import { useEditMode } from '../context/EditModeContext';
+import React from "react";
+import { PageRoute } from "../types";
+import { EditableImage } from "./EditableImage";
 
 interface HeroProps {
   onNavigate?: (page: PageRoute) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
-  const { isEditMode } = useEditMode();
-
   const handleScrollToShop = () => {
-    if (isEditMode) return;
-    const el = document.getElementById('powerpacks');
+    const el = document.getElementById("powerpacks");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     } else if (onNavigate) {
-      onNavigate('/');
+      onNavigate("/");
     }
   };
 
@@ -34,7 +30,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             handleScrollToShop();
           }

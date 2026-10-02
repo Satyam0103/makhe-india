@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -13,10 +13,10 @@ import {
   QrCode,
   Banknote,
   Info,
-} from 'lucide-react';
-import { useCart } from '../context/CartContext';
-import { PageRoute } from '../types';
-import { api, prepareOrderPayload } from '../services/api';
+} from "lucide-react";
+import { useCart } from "../context/CartContext";
+import { PageRoute } from "../types";
+import { api, prepareOrderPayload } from "../services/api";
 
 interface CheckoutProps {
   onNavigate: (page: PageRoute) => void;
@@ -35,30 +35,31 @@ interface FormState {
 }
 
 const INITIAL_FORM: FormState = {
-  fullName: '',
-  phone: '',
-  email: '',
-  addressLine1: '',
-  addressLine2: '',
-  city: '',
-  state: '',
-  pincode: '',
-  country: 'India',
+  fullName: "",
+  phone: "",
+  email: "",
+  addressLine1: "",
+  addressLine2: "",
+  city: "",
+  state: "",
+  pincode: "",
+  country: "India",
 };
 
 // ============================================================================
 // OFFICIAL UPI CONFIGURATION
 // Loads the permanent project asset at /images/upi/makhe-upi-qr.jpeg
 // ============================================================================
-const UPI_ID: string = (import.meta.env.VITE_UPI_ID as string) || 'abhinayan.kumar@phonepe';
-const UPI_QR_IMAGE: string = '/images/upi/makhe-upi-qr.jpeg';
+const UPI_ID: string =
+  (import.meta.env.VITE_UPI_ID as string) || "abhinayan.kumar@phonepe";
+const UPI_QR_IMAGE: string = "/images/upi/makhe-upi-qr.jpeg";
 
 interface PlacedOrderDetails {
   orderNumber: string;
   orderAccessToken?: string;
   total: number;
   subtotal: number;
-  paymentMethod: 'cod' | 'upi';
+  paymentMethod: "cod" | "upi";
   upiTransactionId?: string;
   recipientName: string;
   phone: string;
@@ -68,14 +69,16 @@ interface PlacedOrderDetails {
 export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
   const { cart, subtotal, totalItems, clearCart } = useCart();
   const [formData, setFormData] = useState<FormState>(INITIAL_FORM);
-  const [paymentMethod, setPaymentMethod] = useState<'cod' | 'upi'>('cod');
-  const [upiTransactionId, setUpiTransactionId] = useState<string>('');
+  const [paymentMethod, setPaymentMethod] = useState<"cod" | "upi">("upi");
+  const [upiTransactionId, setUpiTransactionId] = useState<string>("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [processingStatus, setProcessingStatus] = useState<string>('');
+  const [processingStatus, setProcessingStatus] = useState<string>("");
   const [serverError, setServerError] = useState<string | null>(null);
   const [copiedUpi, setCopiedUpi] = useState<boolean>(false);
-  const [placedOrder, setPlacedOrder] = useState<PlacedOrderDetails | null>(null);
+  const [placedOrder, setPlacedOrder] = useState<PlacedOrderDetails | null>(
+    null,
+  );
 
   // Copy UPI ID helper
   const handleCopyUpi = () => {
@@ -92,52 +95,57 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
 
     // 1. Full Name *
     if (!formData.fullName.trim() || formData.fullName.trim().length < 2) {
-      newErrors.fullName = 'Full Name is required (minimum 2 characters)';
+      newErrors.fullName = "Full Name is required (minimum 2 characters)";
     }
 
     // 2. Phone Number * (10-digit Indian Mobile)
-    const cleanedPhone = formData.phone.trim().replace(/[\s-]/g, '');
+    const cleanedPhone = formData.phone.trim().replace(/[\s-]/g, "");
     if (!cleanedPhone) {
-      newErrors.phone = 'Phone number is required';
+      newErrors.phone = "Phone number is required";
     } else if (!/^(?:\+91|91|0)?[6-9]\d{9}$/.test(cleanedPhone)) {
-      newErrors.phone = 'Please enter a valid 10-digit Indian mobile number';
+      newErrors.phone = "Please enter a valid 10-digit Indian mobile number";
     }
 
     // 3. Email Address (Optional, but if filled must be valid)
-    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      newErrors.email = 'Please enter a valid email address';
+    if (
+      formData.email.trim() &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
+    ) {
+      newErrors.email = "Please enter a valid email address";
     }
 
     // 4. Address Line 1 *
     if (!formData.addressLine1.trim()) {
-      newErrors.addressLine1 = 'Address Line 1 is required';
+      newErrors.addressLine1 = "Address Line 1 is required";
     }
 
     // 5. City *
     if (!formData.city.trim()) {
-      newErrors.city = 'City is required';
+      newErrors.city = "City is required";
     }
 
     // 6. State *
     if (!formData.state.trim()) {
-      newErrors.state = 'State is required';
+      newErrors.state = "State is required";
     }
 
     // 7. PIN Code * (6 digits)
-    const cleanedPin = formData.pincode.trim().replace(/\s/g, '');
+    const cleanedPin = formData.pincode.trim().replace(/\s/g, "");
     if (!cleanedPin) {
-      newErrors.pincode = 'PIN Code is required';
+      newErrors.pincode = "PIN Code is required";
     } else if (!/^[1-9][0-9]{5}$/.test(cleanedPin)) {
-      newErrors.pincode = 'Please enter a valid 6-digit PIN code';
+      newErrors.pincode = "Please enter a valid 6-digit PIN code";
     }
 
     // 8. UPI Transaction ID / UTR * (Only if UPI is selected)
-    if (paymentMethod === 'upi') {
+    if (paymentMethod === "upi") {
       const cleanUtr = upiTransactionId.trim();
       if (!cleanUtr) {
-        newErrors.upiTransactionId = 'UPI Transaction ID / UTR is required after completing payment';
+        newErrors.upiTransactionId =
+          "UPI Transaction ID / UTR is required after completing payment";
       } else if (cleanUtr.length < 4) {
-        newErrors.upiTransactionId = 'Please enter a valid UPI reference / UTR number (at least 4 characters)';
+        newErrors.upiTransactionId =
+          "Please enter a valid UPI reference / UTR number (at least 4 characters)";
       }
     }
 
@@ -160,7 +168,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
 
     setServerError(null);
     setIsProcessing(true);
-    setProcessingStatus('Saving order in database...');
+    setProcessingStatus("Saving order in database...");
 
     try {
       // Prepare canonical payload (server recalculates all prices)
@@ -183,13 +191,19 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
           quantity: item.quantity,
         })),
         paymentMethod,
-        paymentMethod === 'upi' ? upiTransactionId.trim() : undefined
+        paymentMethod === "upi" ? upiTransactionId.trim() : undefined,
       );
 
       const orderResponse = await api.createOrder(payload);
 
-      if (!orderResponse.success || (!orderResponse.order && !orderResponse.data)) {
-        throw new Error(orderResponse.message || 'Database could not save order. Please try again.');
+      if (
+        !orderResponse.success ||
+        (!orderResponse.order && !orderResponse.data)
+      ) {
+        throw new Error(
+          orderResponse.message ||
+            "Database could not save order. Please try again.",
+        );
       }
 
       const savedOrder = orderResponse.order || orderResponse.data;
@@ -198,22 +212,26 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
 
       // Persist snapshot to local recent orders for customer reference
       try {
-        const stored = JSON.parse(localStorage.getItem('makhe_recent_orders') || '[]');
+        const stored = JSON.parse(
+          localStorage.getItem("makhe_recent_orders") || "[]",
+        );
         const snapshot = {
           orderNumber,
           orderToken,
-          date: new Date().toLocaleDateString('en-IN', {
-            day: 'numeric',
-            month: 'short',
-            year: 'numeric',
+          date: new Date().toLocaleDateString("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
           }),
           subtotal: savedOrder.subtotal,
           shippingAmount: savedOrder.shippingAmount || 0,
           total: savedOrder.total,
           itemsCount: totalItems,
-          orderStatus: savedOrder.orderStatus || 'confirmed',
+          orderStatus: savedOrder.orderStatus || "confirmed",
           paymentMethod,
-          paymentStatus: savedOrder.paymentStatus || (paymentMethod === 'cod' ? 'pending' : 'verification_pending'),
+          paymentStatus:
+            savedOrder.paymentStatus ||
+            (paymentMethod === "cod" ? "pending" : "verification_pending"),
           upiTransactionId: savedOrder.upiTransactionId || undefined,
           recipientName: formData.fullName,
           shippingAddress: {
@@ -234,7 +252,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
             lineTotal: item.product.price * item.quantity,
           })),
         };
-        localStorage.setItem('makhe_recent_orders', JSON.stringify([snapshot, ...stored].slice(0, 10)));
+        localStorage.setItem(
+          "makhe_recent_orders",
+          JSON.stringify([snapshot, ...stored].slice(0, 10)),
+        );
       } catch {
         // Safe fallback
       }
@@ -256,11 +277,14 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
       });
 
       setIsProcessing(false);
-      setProcessingStatus('');
+      setProcessingStatus("");
     } catch (err: any) {
       setIsProcessing(false);
-      setProcessingStatus('');
-      setServerError(err.message || 'An error occurred while creating your order. Please check your details and retry.');
+      setProcessingStatus("");
+      setServerError(
+        err.message ||
+          "An error occurred while creating your order. Please check your details and retry.",
+      );
     }
   };
 
@@ -272,7 +296,6 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
       <div className="checkout-page w-full bg-[#FAF7F2] min-h-screen py-16 lg:py-24 selection:bg-[#142B1A] selection:text-[#FAF7F2]">
         <div className="checkout-container max-w-2xl mx-auto px-4 sm:px-6">
           <div className="checkout-card bg-white rounded-3xl border border-[#DDD1BE] p-8 sm:p-12 shadow-xl text-center space-y-6">
-            
             {/* Success Icon */}
             <div className="w-20 h-20 rounded-full bg-[#EBF7EE] border-2 border-[#1E7535] text-[#1E7535] flex items-center justify-center mx-auto shadow-sm">
               <CheckCircle2 size={44} className="stroke-[2.5]" />
@@ -286,43 +309,66 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 Order Placed Successfully
               </h1>
               <p className="text-sm text-[#4E6152] font-sans-brand max-w-md mx-auto">
-                Thank you, <strong>{placedOrder.recipientName}</strong>. Your order has been registered and is being prepared for dispatch from Bihar.
+                Thank you, <strong>{placedOrder.recipientName}</strong>. Your
+                order has been registered and is being prepared for dispatch
+                from Bihar.
               </p>
             </div>
 
             {/* Key Order Details Box */}
             <div className="bg-[#FAF7F2] rounded-2xl p-6 border border-[#E5DAC6] text-left space-y-3 font-sans-brand text-sm">
               <div className="flex justify-between items-center pb-3 border-b border-[#E5DAC6]">
-                <span className="text-[#6B8071] text-xs uppercase tracking-wider font-semibold">Order Number</span>
-                <span className="font-mono font-bold text-[#142B1A] text-base">{placedOrder.orderNumber}</span>
-              </div>
-
-              <div className="flex justify-between items-center pb-3 border-b border-[#E5DAC6]">
-                <span className="text-[#6B8071] text-xs uppercase tracking-wider font-semibold">Order Total</span>
-                <span className="font-serif-brand font-bold text-xl text-[#142B1A]">₹{placedOrder.total}</span>
-              </div>
-
-              <div className="flex justify-between items-center pb-3 border-b border-[#E5DAC6]">
-                <span className="text-[#6B8071] text-xs uppercase tracking-wider font-semibold">Payment Method</span>
-                <span className="font-bold text-[#142B1A]">
-                  {placedOrder.paymentMethod === 'cod' ? 'Cash on Delivery' : 'UPI Payment'}
+                <span className="text-[#6B8071] text-xs uppercase tracking-wider font-semibold">
+                  Order Number
+                </span>
+                <span className="font-mono font-bold text-[#142B1A] text-base">
+                  {placedOrder.orderNumber}
                 </span>
               </div>
 
-              {placedOrder.paymentMethod === 'cod' ? (
+              <div className="flex justify-between items-center pb-3 border-b border-[#E5DAC6]">
+                <span className="text-[#6B8071] text-xs uppercase tracking-wider font-semibold">
+                  Order Total
+                </span>
+                <span className="font-serif-brand font-bold text-xl text-[#142B1A]">
+                  ₹{placedOrder.total}
+                </span>
+              </div>
+
+              <div className="flex justify-between items-center pb-3 border-b border-[#E5DAC6]">
+                <span className="text-[#6B8071] text-xs uppercase tracking-wider font-semibold">
+                  Payment Method
+                </span>
+                <span className="font-bold text-[#142B1A]">
+                  {placedOrder.paymentMethod === "cod"
+                    ? "Cash on Delivery"
+                    : "UPI Payment"}
+                </span>
+              </div>
+
+              {placedOrder.paymentMethod === "cod" ? (
                 <div className="pt-1 flex items-start gap-2 text-xs text-[#2A6E3B]">
                   <Banknote size={16} className="shrink-0 mt-0.5" />
-                  <span>Please keep exact cash of <strong>₹{placedOrder.total}</strong> ready upon courier delivery.</span>
+                  <span>
+                    Please keep exact cash of{" "}
+                    <strong>₹{placedOrder.total}</strong> ready upon courier
+                    delivery.
+                  </span>
                 </div>
               ) : (
                 <div className="pt-1 space-y-1.5 text-xs">
                   <div className="flex justify-between items-center text-[#556958]">
                     <span>UPI Reference / UTR:</span>
-                    <span className="font-mono font-bold text-[#142B1A]">{placedOrder.upiTransactionId}</span>
+                    <span className="font-mono font-bold text-[#142B1A]">
+                      {placedOrder.upiTransactionId}
+                    </span>
                   </div>
                   <div className="flex items-start gap-2 text-[#8C6D1F]">
                     <Info size={16} className="shrink-0 mt-0.5" />
-                    <span>Your payment verification is pending manual review by our finance team before parcel dispatch.</span>
+                    <span>
+                      Your payment verification is pending manual review by our
+                      finance team before parcel dispatch.
+                    </span>
                   </div>
                 </div>
               )}
@@ -334,7 +380,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 type="button"
                 onClick={() => {
                   const url = placedOrder.orderAccessToken
-                    ? `/order-confirmation/${placedOrder.orderNumber}?token=${encodeURIComponent(placedOrder.orderAccessToken)}`
+                    ? `/order-confirmation/${
+                        placedOrder.orderNumber
+                      }?token=${encodeURIComponent(
+                        placedOrder.orderAccessToken,
+                      )}`
                     : `/order-confirmation/${placedOrder.orderNumber}`;
                   onNavigate(url);
                 }}
@@ -346,13 +396,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
 
               <button
                 type="button"
-                onClick={() => onNavigate('/')}
+                onClick={() => onNavigate("/")}
                 className="w-full sm:w-auto px-7 py-3.5 bg-white text-[#142B1A] border border-[#D9CBB3] font-bold text-xs uppercase tracking-widest rounded-full hover:bg-[#FAF7F2] cursor-pointer"
               >
                 Continue Shopping
               </button>
             </div>
-
           </div>
         </div>
       </div>
@@ -372,12 +421,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
               Your Cart is Empty
             </h2>
             <p className="text-sm text-[#4E6152] font-sans-brand">
-              Please select your favourite Makhé makhana pack before proceeding to checkout.
+              Please select your favourite Makhé makhana pack before proceeding
+              to checkout.
             </p>
             <div className="pt-2">
               <button
                 type="button"
-                onClick={() => onNavigate('/')}
+                onClick={() => onNavigate("/")}
                 className="px-7 py-3.5 bg-[#142B1A] text-[#FAF7F2] font-bold text-xs uppercase tracking-widest rounded-full hover:bg-[#234A30] cursor-pointer"
               >
                 Explore Products
@@ -395,12 +445,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
   return (
     <div className="checkout-page w-full bg-[#FAF7F2] min-h-screen py-12 lg:py-20 selection:bg-[#142B1A] selection:text-[#FAF7F2]">
       <div className="checkout-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Top Back Navigation */}
         <div className="mb-8">
           <button
             type="button"
-            onClick={() => onNavigate('/cart')}
+            onClick={() => onNavigate("/cart")}
             className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#8C6D1F] hover:text-[#142B1A] font-bold font-sans-brand transition-colors cursor-pointer"
           >
             <ArrowLeft size={16} />
@@ -436,13 +485,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
         )}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
           {/* ================================================================
               LEFT: CHECKOUT FORM (7 cols on desktop)
           ================================================================ */}
           <div className="lg:col-span-7">
             <form onSubmit={handlePlaceOrder} noValidate className="space-y-8">
-              
               {/* 1. CUSTOMER INFORMATION */}
               <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#DDD1BE] shadow-xs space-y-6">
                 <div className="flex items-center gap-3 pb-4 border-b border-[#F2ECE1]">
@@ -457,7 +504,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Full Name * */}
                   <div>
-                    <label htmlFor="checkout-fullname" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                    <label
+                      htmlFor="checkout-fullname"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
                       FULL NAME <span className="text-[#C0392B]">*</span>
                     </label>
                     <input
@@ -468,20 +518,28 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                       value={formData.fullName}
                       onChange={(e) => {
                         setFormData({ ...formData, fullName: e.target.value });
-                        if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: '' }));
+                        if (errors.fullName)
+                          setErrors((prev) => ({ ...prev, fullName: "" }));
                       }}
                       className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                        errors.fullName ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                        errors.fullName
+                          ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                          : "border-[#D9CBB3] focus:border-[#142B1A]"
                       }`}
                     />
                     {errors.fullName && (
-                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.fullName}</p>
+                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                        {errors.fullName}
+                      </p>
                     )}
                   </div>
 
                   {/* Phone Number * */}
                   <div>
-                    <label htmlFor="checkout-phone" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                    <label
+                      htmlFor="checkout-phone"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
                       PHONE NUMBER <span className="text-[#C0392B]">*</span>
                     </label>
                     <input
@@ -492,21 +550,32 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                       value={formData.phone}
                       onChange={(e) => {
                         setFormData({ ...formData, phone: e.target.value });
-                        if (errors.phone) setErrors((prev) => ({ ...prev, phone: '' }));
+                        if (errors.phone)
+                          setErrors((prev) => ({ ...prev, phone: "" }));
                       }}
                       className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                        errors.phone ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                        errors.phone
+                          ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                          : "border-[#D9CBB3] focus:border-[#142B1A]"
                       }`}
                     />
                     {errors.phone && (
-                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.phone}</p>
+                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                        {errors.phone}
+                      </p>
                     )}
                   </div>
 
                   {/* Email Address (Optional) */}
                   <div className="sm:col-span-2">
-                    <label htmlFor="checkout-email" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
-                      EMAIL ADDRESS <span className="text-xs normal-case text-[#7B8F80] font-normal">(optional — for order confirmation receipt)</span>
+                    <label
+                      htmlFor="checkout-email"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
+                      EMAIL ADDRESS{" "}
+                      <span className="text-xs normal-case text-[#7B8F80] font-normal">
+                        (optional — for order confirmation receipt)
+                      </span>
                     </label>
                     <input
                       id="checkout-email"
@@ -516,14 +585,19 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                       value={formData.email}
                       onChange={(e) => {
                         setFormData({ ...formData, email: e.target.value });
-                        if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
+                        if (errors.email)
+                          setErrors((prev) => ({ ...prev, email: "" }));
                       }}
                       className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                        errors.email ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                        errors.email
+                          ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                          : "border-[#D9CBB3] focus:border-[#142B1A]"
                       }`}
                     />
                     {errors.email && (
-                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.email}</p>
+                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -542,7 +616,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
 
                 {/* Address Line 1 * */}
                 <div>
-                  <label htmlFor="checkout-address1" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                  <label
+                    htmlFor="checkout-address1"
+                    className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                  >
                     ADDRESS <span className="text-[#C0392B]">*</span>
                   </label>
                   <input
@@ -552,22 +629,36 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                     placeholder="House / Flat / Street Name"
                     value={formData.addressLine1}
                     onChange={(e) => {
-                      setFormData({ ...formData, addressLine1: e.target.value });
-                      if (errors.addressLine1) setErrors((prev) => ({ ...prev, addressLine1: '' }));
+                      setFormData({
+                        ...formData,
+                        addressLine1: e.target.value,
+                      });
+                      if (errors.addressLine1)
+                        setErrors((prev) => ({ ...prev, addressLine1: "" }));
                     }}
                     className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                      errors.addressLine1 ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                      errors.addressLine1
+                        ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                        : "border-[#D9CBB3] focus:border-[#142B1A]"
                     }`}
                   />
                   {errors.addressLine1 && (
-                    <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.addressLine1}</p>
+                    <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                      {errors.addressLine1}
+                    </p>
                   )}
                 </div>
 
                 {/* Address Line 2 */}
                 <div>
-                  <label htmlFor="checkout-address2" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
-                    ADDRESS LINE 2 <span className="text-xs normal-case text-[#7B8F80] font-normal">(optional landmark or area)</span>
+                  <label
+                    htmlFor="checkout-address2"
+                    className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                  >
+                    ADDRESS LINE 2{" "}
+                    <span className="text-xs normal-case text-[#7B8F80] font-normal">
+                      (optional landmark or area)
+                    </span>
                   </label>
                   <input
                     id="checkout-address2"
@@ -575,7 +666,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                     disabled={isProcessing}
                     placeholder="Area, Sector or Landmark"
                     value={formData.addressLine2}
-                    onChange={(e) => setFormData({ ...formData, addressLine2: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, addressLine2: e.target.value })
+                    }
                     className="w-full px-4 py-3.5 rounded-xl border border-[#D9CBB3] bg-[#FAF7F2] text-sm text-[#142B1A] focus:outline-none focus:border-[#142B1A]"
                   />
                 </div>
@@ -583,7 +676,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 {/* City & State */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="checkout-city" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                    <label
+                      htmlFor="checkout-city"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
                       CITY <span className="text-[#C0392B]">*</span>
                     </label>
                     <input
@@ -594,19 +690,27 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                       value={formData.city}
                       onChange={(e) => {
                         setFormData({ ...formData, city: e.target.value });
-                        if (errors.city) setErrors((prev) => ({ ...prev, city: '' }));
+                        if (errors.city)
+                          setErrors((prev) => ({ ...prev, city: "" }));
                       }}
                       className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                        errors.city ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                        errors.city
+                          ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                          : "border-[#D9CBB3] focus:border-[#142B1A]"
                       }`}
                     />
                     {errors.city && (
-                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.city}</p>
+                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                        {errors.city}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="checkout-state" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                    <label
+                      htmlFor="checkout-state"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
                       STATE <span className="text-[#C0392B]">*</span>
                     </label>
                     <input
@@ -617,14 +721,19 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                       value={formData.state}
                       onChange={(e) => {
                         setFormData({ ...formData, state: e.target.value });
-                        if (errors.state) setErrors((prev) => ({ ...prev, state: '' }));
+                        if (errors.state)
+                          setErrors((prev) => ({ ...prev, state: "" }));
                       }}
                       className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                        errors.state ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                        errors.state
+                          ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                          : "border-[#D9CBB3] focus:border-[#142B1A]"
                       }`}
                     />
                     {errors.state && (
-                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.state}</p>
+                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                        {errors.state}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -632,7 +741,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 {/* PIN Code & Country */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="checkout-pincode" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                    <label
+                      htmlFor="checkout-pincode"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
                       PIN CODE <span className="text-[#C0392B]">*</span>
                     </label>
                     <input
@@ -644,19 +756,27 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                       value={formData.pincode}
                       onChange={(e) => {
                         setFormData({ ...formData, pincode: e.target.value });
-                        if (errors.pincode) setErrors((prev) => ({ ...prev, pincode: '' }));
+                        if (errors.pincode)
+                          setErrors((prev) => ({ ...prev, pincode: "" }));
                       }}
                       className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] transition-colors focus:outline-none ${
-                        errors.pincode ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                        errors.pincode
+                          ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                          : "border-[#D9CBB3] focus:border-[#142B1A]"
                       }`}
                     />
                     {errors.pincode && (
-                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">{errors.pincode}</p>
+                      <p className="text-xs text-[#C0392B] mt-1.5 font-medium">
+                        {errors.pincode}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="checkout-country" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
+                    <label
+                      htmlFor="checkout-country"
+                      className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                    >
                       COUNTRY
                     </label>
                     <input
@@ -668,11 +788,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                     />
                   </div>
                 </div>
-
               </div>
 
               {/* ================================================================
-                  3. PAYMENT METHOD — EXACTLY TWO: COD & UPI
+                  3. PAYMENT METHOD — UPI
               ================================================================ */}
               <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#DDD1BE] shadow-xs space-y-6">
                 <div className="flex items-center gap-3 pb-4 border-b border-[#F2ECE1]">
@@ -685,80 +804,27 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 </div>
 
                 <div className="space-y-4">
-                  {/* OPTION 1: Cash on Delivery (COD) */}
-                  <label
-                    className={`block p-5 rounded-2xl border-2 transition-all cursor-pointer ${
-                      paymentMethod === 'cod'
-                        ? 'border-[#142B1A] bg-[#FAF7F2] shadow-sm'
-                        : 'border-[#E5DAC6] bg-white hover:border-[#C59B27]'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3.5">
-                        <input
-                          type="radio"
-                          name="paymentMethod"
-                          value="cod"
-                          checked={paymentMethod === 'cod'}
-                          onChange={() => {
-                            setPaymentMethod('cod');
-                            if (errors.upiTransactionId) {
-                              setErrors((prev) => ({ ...prev, upiTransactionId: '' }));
-                            }
-                          }}
-                          className="w-4 h-4 text-[#142B1A] focus:ring-[#142B1A] accent-[#142B1A]"
-                        />
-                        <div>
-                          <span className="font-bold text-sm text-[#142B1A] block">
-                            Cash on Delivery (COD)
-                          </span>
-                          <span className="text-xs text-[#596E5F]">
-                            Pay with cash when your parcel is delivered at your doorstep.
-                          </span>
-                        </div>
-                      </div>
-                      <Banknote size={20} className="text-[#8C6D1F] shrink-0" />
-                    </div>
-                  </label>
-
-                  {/* OPTION 2: UPI Payment */}
-                  <label
-                    className={`block p-5 rounded-2xl border-2 transition-all cursor-pointer ${
-                      paymentMethod === 'upi'
-                        ? 'border-[#142B1A] bg-[#FAF7F2] shadow-sm'
-                        : 'border-[#E5DAC6] bg-white hover:border-[#C59B27]'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3.5">
-                        <input
-                          type="radio"
-                          name="paymentMethod"
-                          value="upi"
-                          checked={paymentMethod === 'upi'}
-                          onChange={() => setPaymentMethod('upi')}
-                          className="w-4 h-4 text-[#142B1A] focus:ring-[#142B1A] accent-[#142B1A]"
-                        />
-                        <div>
-                          <span className="font-bold text-sm text-[#142B1A] block">
-                            UPI Payment
-                          </span>
-                          <span className="text-xs text-[#596E5F]">
-                            Pay via Google Pay, PhonePe, Paytm, BHIM, or any banking UPI app.
-                          </span>
-                        </div>
+                  <div className="block p-5 rounded-2xl border-2 border-[#142B1A] bg-[#FAF7F2] shadow-sm">
+                    <div className="flex items-center justify-between gap-4">
+                      <div>
+                        <span className="font-bold text-sm text-[#142B1A] block">
+                          UPI Payment
+                        </span>
+                        <span className="text-xs text-[#596E5F]">
+                          Pay via Google Pay, PhonePe, Paytm, BHIM, or any
+                          banking UPI app.
+                        </span>
                       </div>
                       <QrCode size={20} className="text-[#8C6D1F] shrink-0" />
                     </div>
-                  </label>
+                  </div>
                 </div>
 
                 {/* ================================================================
                     UPI PAYMENT BOX (Shown when UPI is selected)
                 ================================================================ */}
-                {paymentMethod === 'upi' && (
+                {paymentMethod === "upi" && (
                   <div className="mt-6 pt-6 border-t border-[#E5DAC6] space-y-6">
-                    
                     {/* Live Official UPI Payment Box */}
                     <div className="p-6 rounded-2xl bg-[#F4EFE6] border border-[#DDD1BE] space-y-5">
                       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
@@ -780,12 +846,15 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                               OFFICIAL MAKHÉ INDIA UPI PAYMENT
                             </span>
                             <p className="text-xs text-[#596E5F] mt-0.5">
-                              Scan the QR code directly with any UPI application or use the ID below.
+                              Scan the QR code directly with any UPI application
+                              or use the ID below.
                             </p>
                           </div>
-                          
+
                           <div className="space-y-1 bg-white/70 p-3.5 rounded-xl border border-[#E5DAC6]">
-                            <span className="text-xs text-[#596E5F] block font-semibold">Total Payable Amount:</span>
+                            <span className="text-xs text-[#596E5F] block font-semibold">
+                              Total Payable Amount:
+                            </span>
                             <span className="text-3xl font-serif-brand font-bold text-[#142B1A]">
                               ₹{subtotal}
                             </span>
@@ -793,7 +862,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
 
                           {/* UPI ID + Copy Button */}
                           <div className="space-y-1.5">
-                            <span className="text-xs text-[#6B8071] font-semibold block">Merchant VPA / UPI ID:</span>
+                            <span className="text-xs text-[#6B8071] font-semibold block">
+                              Merchant VPA / UPI ID:
+                            </span>
                             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
                               <div className="px-3.5 py-2 rounded-xl bg-white border border-[#D9CBB3] font-mono text-xs font-bold text-[#142B1A] select-all">
                                 {UPI_ID}
@@ -805,7 +876,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                               >
                                 {copiedUpi ? (
                                   <>
-                                    <Check size={14} className="text-[#E5C778]" />
+                                    <Check
+                                      size={14}
+                                      className="text-[#E5C778]"
+                                    />
                                     <span>Copied!</span>
                                   </>
                                 ) : (
@@ -824,11 +898,16 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                     {/* UTR Input Section */}
                     <div className="space-y-3 pt-2">
                       <p className="text-xs font-semibold text-[#142B1A] font-sans-brand">
-                        After completing the payment, enter your UPI Transaction ID / UTR:
+                        After completing the payment, enter your UPI Transaction
+                        ID / UTR:
                       </p>
                       <div>
-                        <label htmlFor="checkout-utr" className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand">
-                          UPI TRANSACTION ID / UTR <span className="text-[#C0392B]">*</span>
+                        <label
+                          htmlFor="checkout-utr"
+                          className="block text-xs font-bold uppercase tracking-wider text-[#142B1A] mb-2 font-sans-brand"
+                        >
+                          UPI TRANSACTION ID / UTR{" "}
+                          <span className="text-[#C0392B]">*</span>
                         </label>
                         <input
                           id="checkout-utr"
@@ -838,24 +917,31 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                           value={upiTransactionId}
                           onChange={(e) => {
                             setUpiTransactionId(e.target.value);
-                            if (errors.upiTransactionId) setErrors((prev) => ({ ...prev, upiTransactionId: '' }));
+                            if (errors.upiTransactionId)
+                              setErrors((prev) => ({
+                                ...prev,
+                                upiTransactionId: "",
+                              }));
                           }}
                           className={`w-full px-4 py-3.5 rounded-xl border bg-[#FAF7F2] text-sm text-[#142B1A] font-mono transition-colors focus:outline-none ${
-                            errors.upiTransactionId ? 'border-[#C0392B] ring-1 ring-[#C0392B]' : 'border-[#D9CBB3] focus:border-[#142B1A]'
+                            errors.upiTransactionId
+                              ? "border-[#C0392B] ring-1 ring-[#C0392B]"
+                              : "border-[#D9CBB3] focus:border-[#142B1A]"
                           }`}
                         />
                         {errors.upiTransactionId && (
-                          <p className="text-xs text-[#C0392B] mt-1.5 font-medium font-sans-brand">{errors.upiTransactionId}</p>
+                          <p className="text-xs text-[#C0392B] mt-1.5 font-medium font-sans-brand">
+                            {errors.upiTransactionId}
+                          </p>
                         )}
                         <p className="text-[11px] text-[#7B8F80] mt-1.5 font-sans-brand">
-                          * Entering a UTR registers the order for manual admin verification before parcel dispatch.
+                          * Entering a UTR registers the order for manual admin
+                          verification before parcel dispatch.
                         </p>
                       </div>
                     </div>
-
                   </div>
                 )}
-
               </div>
 
               {/* ================================================================
@@ -869,10 +955,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 >
                   {isProcessing ? (
                     <>
-                      <RefreshCw size={16} className="animate-spin text-[#E5C778]" />
-                      <span>{processingStatus || 'CONFIRMING ORDER...'}</span>
+                      <RefreshCw
+                        size={16}
+                        className="animate-spin text-[#E5C778]"
+                      />
+                      <span>{processingStatus || "CONFIRMING ORDER..."}</span>
                     </>
-                  ) : paymentMethod === 'upi' ? (
+                  ) : paymentMethod === "upi" ? (
                     <>
                       <span>I HAVE PAID — PLACE ORDER</span>
                       <ArrowRight size={16} className="text-[#E5C778]" />
@@ -885,7 +974,6 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                   )}
                 </button>
               </div>
-
             </form>
           </div>
 
@@ -894,13 +982,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
           ================================================================ */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white rounded-3xl border border-[#DDD1BE] p-6 sm:p-8 shadow-md space-y-6 sticky top-28">
-              
               <div className="flex items-center justify-between pb-4 border-b border-[#E5DAC6]">
                 <h2 className="text-xl font-serif-brand font-bold text-[#142B1A]">
                   Order Summary
                 </h2>
                 <span className="text-xs uppercase tracking-wider font-bold text-[#8C6D1F]">
-                  {totalItems} {totalItems === 1 ? 'pack' : 'packs'}
+                  {totalItems} {totalItems === 1 ? "pack" : "packs"}
                 </span>
               </div>
 
@@ -909,7 +996,10 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                 {cart.map((item) => {
                   const lineTotal = item.product.price * item.quantity;
                   return (
-                    <div key={item.product.id} className="flex items-center justify-between gap-4 py-2 border-b border-[#F2ECE1] last:border-0">
+                    <div
+                      key={item.product.id}
+                      className="flex items-center justify-between gap-4 py-2 border-b border-[#F2ECE1] last:border-0"
+                    >
                       <div className="flex items-center gap-3.5">
                         <div className="w-14 h-16 bg-[#F4EFE6] rounded-xl p-1.5 flex items-center justify-center shrink-0 border border-[#E5DAC6]">
                           <img
@@ -945,7 +1035,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
               <div className="space-y-3 pt-4 border-t border-[#E5DAC6] text-xs font-sans-brand">
                 <div className="flex justify-between items-baseline">
                   <span className="text-[#556958]">Items Subtotal</span>
-                  <span className="text-base font-bold text-[#142B1A]">₹{subtotal}</span>
+                  <span className="text-base font-bold text-[#142B1A]">
+                    ₹{subtotal}
+                  </span>
                 </div>
 
                 <div className="flex justify-between items-baseline">
@@ -982,12 +1074,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                   <span>100% Whole Jumbo Harvest from Bihar Ponds</span>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   );

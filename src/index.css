@@ -2,27 +2,28 @@
 
 @layer base {
   :root {
-    --brand-forest: #142B1A;
-    --brand-forest-dark: #0E1D13;
-    --brand-forest-light: #23422C;
-    --brand-cream: #FAF7F2;
-    --brand-cream-soft: #F4EFE6;
-    --brand-gold: #C59B27;
-    --brand-gold-bright: #E5C778;
-    --brand-brown: #5A3825;
+    --brand-forest: #142b1a;
+    --brand-forest-dark: #0e1d13;
+    --brand-forest-light: #23422c;
+    --brand-cream: #faf7f2;
+    --brand-cream-soft: #f4efe6;
+    --brand-gold: #c59b27;
+    --brand-gold-bright: #e5c778;
+    --brand-brown: #5a3825;
   }
 }
 
 .font-serif-brand {
-  font-family: 'Playfair Display', 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif;
+  font-family: "Playfair Display", "Cormorant Garamond", "Noto Serif Devanagari",
+    Georgia, serif;
 }
 
 .font-devanagari {
-  font-family: 'Noto Serif Devanagari', 'Playfair Display', serif;
+  font-family: "Noto Serif Devanagari", "Playfair Display", serif;
 }
 
 .font-sans-brand {
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
 
 /* Continuous seamless marquee animation without gaps */
@@ -48,4 +49,43 @@
 /* Smooth transitions */
 .smooth-hover {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.craving-carousel {
+  display: flex;
+  gap: 0.625rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.craving-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.craving-carousel-panel {
+  flex: 0 0 86%;
+  aspect-ratio: 13 / 20;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .craving-carousel {
+    gap: 1rem;
+  }
+
+  .craving-carousel-panel {
+    flex-basis: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .craving-carousel {
+    gap: 1.5rem;
+  }
+
+  .craving-carousel-panel {
+    flex-basis: 48%;
+  }
 }
