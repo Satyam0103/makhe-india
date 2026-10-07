@@ -1,6 +1,5 @@
 import React from "react";
 import { PageRoute } from "../types";
-import { EditableImage } from "./EditableImage";
 
 interface HeroProps {
   onNavigate?: (page: PageRoute) => void;
@@ -18,12 +17,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
   return (
     <section className="relative w-full bg-[#160E09] overflow-hidden select-none">
-      {/* 
-        Official Makhé India Hero Banner
-        Contains the authentic brand campaign:
-        “जितना साफ़ खाएंगे उतना लंबा जाएंगे”
-        Responsive across desktop, tablet and mobile without ugly stretching.
-      */}
       <div
         className="w-full flex items-center justify-center bg-[#160E09] cursor-pointer relative"
         onClick={handleScrollToShop}
@@ -37,16 +30,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         }}
         aria-label="Makhé India — जितना साफ़ खाएंगे उतना लंबा जाएंगे. Click to shop premium jumbo makhana."
       >
-        <EditableImage
-          src="/images/hero/makhe-hero.webp"
+        <img
+          src="/images/hero/makhe-hero-banner.jpg"
           alt="Makhé India — जितना साफ़ खाएंगे उतना लंबा जाएंगे • 100% Whole Jumbo Makhana"
-          storageKey="home-hero-banner"
-          label="CHANGE BANNER IMAGE"
-          objectFit="contain"
-          className="w-full h-auto max-w-full block select-none object-contain transition-opacity duration-300"
+          className="block w-full h-auto max-w-full select-none object-contain transition-opacity duration-300"
           loading="eager"
           fetchPriority="high"
-          containerClassName="w-full flex items-center justify-center overflow-hidden"
         />
       </div>
     </section>

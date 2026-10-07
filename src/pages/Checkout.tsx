@@ -829,16 +829,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onNavigate }) => {
                     <div className="p-6 rounded-2xl bg-[#F4EFE6] border border-[#DDD1BE] space-y-5">
                       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                         {/* Official QR Code Standee */}
-                        <div className="w-56 sm:w-60 bg-black p-2 rounded-2xl border border-[#DDD1BE] shrink-0 shadow-md flex flex-col items-center justify-center">
+                        <div className="w-64 sm:w-72 bg-white border border-[#DDD1BE] p-2 shadow-sm shrink-0">
                           <img
                             src={UPI_QR_IMAGE}
                             alt="Makhé India Official UPI QR Code"
-                            className="w-full h-auto object-contain rounded-xl"
+                            className="block w-full h-auto object-contain bg-white"
                             loading="eager"
                           />
-                          <span className="text-[10px] text-[#A1A1AA] font-sans-brand mt-1.5 tracking-wide text-center">
-                            Scan with PhonePe, GPay, Paytm or BHIM
-                          </span>
                         </div>
                         <div className="space-y-4 flex-1 text-center sm:text-left">
                           <div>
